@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Naiz</string>
+    <string name="dot">dot</string>
+    <string name="sudah_punya_akun">Sudah Punya Akun?</string>
+    <string name="masuk">Masuk</string>
+    <string name="mulai_sekarang">Mulai Sekarang</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="landing_image">Image Onboarding</string>
 </resources>

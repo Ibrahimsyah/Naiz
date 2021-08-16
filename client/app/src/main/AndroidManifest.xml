@@ -13,14 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Naiz">
-
         <activity
-            android:name=".presentation.splashscreen.SplashActivity"
-            android:theme="@style/InitialScreenTheme"
-            android:exported="true">
+            android:name=".presentation.login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.register.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/InitialScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
