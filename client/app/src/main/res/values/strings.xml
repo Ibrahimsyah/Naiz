@@ -15,4 +15,8 @@
     <string name="forget_password_desc">Masukkan alamat email anda dan biarkan kami melakukan sisanya untuk anda</string>
     <string name="email">Alamat Email</string>
     <string name="password">Kata Sandi</string>
+    <string name="create_new_account">Buat Akun Baru</string>
+    <string name="lupa_password">Lupa Kata Sandi?</string>
+    <string name="login_greet">Halo,\nLogin Sekarang</string>
+    <string name="login_desc">Masukkan Informasi Akun Anda Untuk Bisa Menggunakan Akun Anda</string>
 </resources>
