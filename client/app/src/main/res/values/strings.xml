@@ -4,7 +4,15 @@
     <string name="sudah_punya_akun">Sudah Punya Akun?</string>
     <string name="masuk">Masuk</string>
     <string name="mulai_sekarang">Mulai Sekarang</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="landing_image">Image Onboarding</string>
+    <string name="register_greeting">Belum Punya Akun?\nDaftar Sekarang</string>
+    <string name="register_desc">Buat Akun agar Dapat Menjelajahi Fitur Kami dengan Memasukkan Informasi Berikut</string>
+    <string name="username">Username</string>
+    <string name="fullname">Nama Lengkap</string>
+    <string name="confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="create_account">Buat Akun</string>
+    <string name="forget_password_greet">Lupa Kata Sandi?\nJangan Panik</string>
+    <string name="forget_password_desc">Masukkan alamat email anda dan biarkan kami melakukan sisanya untuk anda</string>
+    <string name="email">Alamat Email</string>
+    <string name="password">Kata Sandi</string>
 </resources>
