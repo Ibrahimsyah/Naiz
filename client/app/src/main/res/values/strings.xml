@@ -35,4 +35,9 @@
     <string name="bookmark_this_candi">Bookmark candi ini</string>
     <string name="progress_jelajah_candi">Progress Jelajah Candi</string>
     <string name="time_greeting">Selamat Pagi</string>
+    <string name="selamat_pagi">Selamat Pagi</string>
+    <string name="selamat_siang">Selamat Siang</string>
+    <string name="selamat_malam">Selamat Malam</string>
+    <string name="candi_added_successfully">Candi ditambahkan ke Bookmark</string>
+    <string name="candi_deleted_successfully">Candi dihapus dari Bookmark</string>
 </resources>
