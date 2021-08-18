@@ -9,4 +9,10 @@
         android:name="com.bccowo.naiz.presentation.home.home.HomeFragment"
         tools:layout="@layout/fragment_home">
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_quiz"
+        android:name="com.bccowo.naiz.presentation.home.quiz.QuizFragment"
+        tools:layout="@layout/fragment_quiz" />
+
 </navigation>
