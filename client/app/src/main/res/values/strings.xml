@@ -19,4 +19,11 @@
     <string name="lupa_password">Lupa Kata Sandi?</string>
     <string name="login_greet">Halo,\nLogin Sekarang</string>
     <string name="login_desc">Masukkan Informasi Akun Anda Untuk Bisa Menggunakan Akun Anda</string>
+    <string name="take_a_picture">Scan Foto</string>
+    <string name="title_home">Home Page</string>
+    <string name="title_quiz">Quiz Page</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="camera_access_prompt">Beri izin kamera untuk melanjutkan</string>
+    <string name="delete_all_bookmark">Hapus semua bookmark</string>
 </resources>
