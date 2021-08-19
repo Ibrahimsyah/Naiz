@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.DialogDeleteBookmarksBinding
 import com.bccowo.naiz.databinding.FragmentBookmarkBinding
-import com.bccowo.naiz.presentation.home.candilist.CandiListAdapter
+import com.bccowo.naiz.core.ui.CandiListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookmarkFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.bccowo.naiz.presentation.home.candilist
+package com.bccowo.naiz.core.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
