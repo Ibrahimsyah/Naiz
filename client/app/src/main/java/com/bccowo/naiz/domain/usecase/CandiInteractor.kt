@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.CandiProgress
+import com.bccowo.naiz.domain.model.Ornament
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCase {
@@ -62,6 +63,20 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
                     "Malang",
                     "https://inibaru.id/media/12275/large/normal/e1e09d11-a088-4e01-8025-7bfacc941142__large.jpg",
                     8.5,
+                )
+            })
+        }
+    }
+
+    override fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>> {
+        return liveData {
+            emit(List(6) {
+                val isFound = it % 2 == 0
+                Ornament(
+                    1,
+                    "Relief Cerita Panji",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg/300px-COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg",
+                    isFound
                 )
             })
         }

@@ -3,6 +3,7 @@ package com.bccowo.naiz.domain.usecase
 import androidx.lifecycle.LiveData
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.CandiProgress
+import com.bccowo.naiz.domain.model.Ornament
 
 interface CandiUseCase {
     fun checkCandiBookmarked(candiId: Int): LiveData<Boolean>
@@ -14,4 +15,5 @@ interface CandiUseCase {
     fun getPopularCandi(): LiveData<List<Candi>>
     fun getCandiProgress(): LiveData<List<CandiProgress>>
     fun getAllCandi(): LiveData<List<Candi>>
+    fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>>
 }

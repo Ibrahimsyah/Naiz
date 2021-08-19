@@ -66,6 +66,8 @@
     <string name="rate_level_5">Sangat bagus</string>
     <string name="rating_title">Beri Rating Candi</string>
     <string name="rating_continue">Konfirmasi</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ornament_image">Gambar Ornamen</string>
+    <string name="belum_ditemukan">Belum Ditemukan</string>
+    <string name="check_logo">Check Logo</string>
+    <string name="sudah_ditemukan">Sudah Ditemukan</string>
 </resources>
