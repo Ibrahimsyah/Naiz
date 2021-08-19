@@ -17,6 +17,7 @@ import com.bccowo.naiz.core.util.GreetingGenerator
 import com.bccowo.naiz.databinding.FragmentHomeBinding
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.CandiProgress
+import com.bccowo.naiz.presentation.detail_candi.DetailCandiActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -84,7 +85,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun onPopularCandiClick(candi: Candi) {
-
+        val intent = Intent(context, DetailCandiActivity::class.java)
+        intent.putExtra(DetailCandiActivity.EXTRA_CANDI_DETAIL, candi)
+        startActivity(intent)
     }
 
     private fun onCandiBookmarkChange(candi: Candi, bookmarked: Boolean) {

@@ -26,9 +26,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Naiz">
         <activity
-            android:name=".presentation.home.HomeActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".presentation.detail_candi.DetailCandiActivity"
+            android:theme="@style/DetailTheme"
             android:exported="true" />
+        <activity
+            android:name=".presentation.home.HomeActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true" />
@@ -58,7 +62,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>
