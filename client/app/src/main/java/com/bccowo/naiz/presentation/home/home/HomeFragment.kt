@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         })
 
         binding.btnShowMore.setOnClickListener {
-//            findNavController().navigate(R.id.action_navigation_home_to_candiListFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_candiListFragment)
         }
 
         binding.btnBookmark.setOnClickListener {

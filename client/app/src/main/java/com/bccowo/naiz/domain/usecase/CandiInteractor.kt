@@ -45,5 +45,17 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
         }
     }
 
-
+    override fun getAllCandi(): LiveData<List<Candi>> {
+        return liveData {
+            emit(List(5) {
+                Candi(
+                    it,
+                    "Candi Prambanan",
+                    "Malang",
+                    "https://inibaru.id/media/12275/large/normal/e1e09d11-a088-4e01-8025-7bfacc941142__large.jpg",
+                    8.5,
+                )
+            })
+        }
+    }
 }

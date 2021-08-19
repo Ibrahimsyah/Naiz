@@ -11,4 +11,5 @@ interface CandiUseCase {
 
     fun getPopularCandi(): LiveData<List<Candi>>
     fun getCandiProgress(): LiveData<List<CandiProgress>>
+    fun getAllCandi(): LiveData<List<Candi>>
 }

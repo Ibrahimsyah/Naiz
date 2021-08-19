@@ -8,11 +8,18 @@
         android:id="@+id/navigation_home"
         android:name="com.bccowo.naiz.presentation.home.home.HomeFragment"
         tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_candiListFragment"
+            app:destination="@id/candiListFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_quiz"
         android:name="com.bccowo.naiz.presentation.home.quiz.QuizFragment"
         tools:layout="@layout/fragment_quiz" />
+    <fragment
+        android:id="@+id/candiListFragment"
+        android:name="com.bccowo.naiz.presentation.home.candilist.CandiListFragment"
+        tools:layout="@layout/fragment_candi_list" />
 
 </navigation>

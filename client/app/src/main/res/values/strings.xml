@@ -50,4 +50,8 @@
     <string name="delete_continue">Lanjutkan</string>
     <string name="info_title">Ingin Melanjutkan?</string>
     <string name="info_description">Quiz ini telah diselesaikan, apakah anda ingin mengulang quiz ini lagi?</string>
+    <string name="semua_candi">Semua Candi</string>
+    <string name="candi_location">Lokasi Candi</string>
+    <string name="candi_tidak_di_temukan">Candi Tidak di temukan</string>
+    <string name="search_not_found_desc">Maaf candi yang anda maksud belum ditemukan, coba masukkan kata kunci lainnya :(</string>
 </resources>
