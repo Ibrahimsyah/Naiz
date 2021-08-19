@@ -22,8 +22,6 @@
     <string name="take_a_picture">Scan Foto</string>
     <string name="title_home">Home Page</string>
     <string name="title_quiz">Quiz Page</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="camera_access_prompt">Beri izin kamera untuk melanjutkan</string>
     <string name="delete_all_bookmark">Hapus semua bookmark</string>
     <string name="user_photo">Foto Pengguna</string>
@@ -40,4 +38,16 @@
     <string name="selamat_malam">Selamat Malam</string>
     <string name="candi_added_successfully">Candi ditambahkan ke Bookmark</string>
     <string name="candi_deleted_successfully">Candi dihapus dari Bookmark</string>
+    <string name="quiz_budaya">Quiz Budaya</string>
+    <string name="quiz_status">Status Quiz</string>
+    <string name="quiz_banner">Banner Quiz</string>
+    <string name="quiz_level">Level %1$d</string>
+    <string name="quiz_locked_message">Selesaikan level sebelumnya untuk membuka level ini</string>
+    <string name="delete_icon">delete icon</string>
+    <string name="delete_all_bookmarks">Hapus Semua Bookmarks?</string>
+    <string name="delete_description">Apakah anda yakin akan menghapus semua bookmarks?</string>
+    <string name="batalkan">Batalkan</string>
+    <string name="delete_continue">Lanjutkan</string>
+    <string name="info_title">Ingin Melanjutkan?</string>
+    <string name="info_description">Quiz ini telah diselesaikan, apakah anda ingin mengulang quiz ini lagi?</string>
 </resources>
