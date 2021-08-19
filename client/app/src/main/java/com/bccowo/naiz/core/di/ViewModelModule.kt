@@ -1,5 +1,6 @@
 package com.bccowo.naiz.core.di
 
+import com.bccowo.naiz.presentation.home.bookmark.BookmarkViewModel
 import com.bccowo.naiz.presentation.home.candilist.CandiListViewModel
 import com.bccowo.naiz.presentation.home.home.HomeViewModel
 import com.bccowo.naiz.presentation.home.quiz.QuizViewModel
@@ -10,4 +11,5 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { QuizViewModel(get()) }
     viewModel { CandiListViewModel(get()) }
+    viewModel { BookmarkViewModel(get()) }
 }

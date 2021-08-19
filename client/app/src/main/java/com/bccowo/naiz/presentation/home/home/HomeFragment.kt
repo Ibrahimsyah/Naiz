@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnBookmark.setOnClickListener {
-//            findNavController().navigate(R.id.action_navigation_home_to_bookmarkFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_bookmarkFragment)
         }
     }
     private fun onProgressCandiClick(candiProgress: CandiProgress) {

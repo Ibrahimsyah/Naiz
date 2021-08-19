@@ -54,4 +54,7 @@
     <string name="candi_location">Lokasi Candi</string>
     <string name="candi_tidak_di_temukan">Candi Tidak di temukan</string>
     <string name="search_not_found_desc">Maaf candi yang anda maksud belum ditemukan, coba masukkan kata kunci lainnya :(</string>
+    <string name="candi_disimpan">Candi Disimpan</string>
+    <string name="all_bookmark_deleted">Seluruh candi terhapus dari bookmark</string>
+    <string name="bookmark_deleted">%1$s Terhapus dari Bookmark</string>
 </resources>

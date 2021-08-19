@@ -11,12 +11,20 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
         return naizRepository.checkCandiBookmarked(candiId)
     }
 
+    override fun getBookmarkedCandi(): LiveData<List<Candi>> {
+        return liveData {  }
+    }
+
     override suspend fun insertBookmark(candi: Candi) {
         naizRepository.addCandiToBookmark(candi)
     }
 
     override suspend fun removeBookmark(candi: Candi) {
        naizRepository.removeCandiFromBookmark(candi)
+    }
+
+    override suspend fun removeAllBookmarks() {
+
     }
 
     override fun getPopularCandi(): LiveData<List<Candi>> {
