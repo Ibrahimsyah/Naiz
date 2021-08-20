@@ -74,4 +74,7 @@
     <string name="phone_number">Nomor Telepon</string>
     <string name="make_sure_all_form_filled">Pastikan Semua Kolom Terisi</string>
     <string name="make_sure_confirmation_password_matched">Pastikan Konfirmasi Kata Sandi Sesuai</string>
+    <string name="detail_ornamen">Detail Ornamen</string>
+    <string name="ornament_found_at">Anda menemukan ornamen pada %1$s</string>
+    <string name="ornament_found_date">Anda menemukan ornamen pada</string>
 </resources>
