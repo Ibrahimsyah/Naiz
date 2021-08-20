@@ -77,4 +77,5 @@
     <string name="detail_ornamen">Detail Ornamen</string>
     <string name="ornament_found_at">Anda menemukan ornamen pada %1$s</string>
     <string name="ornament_found_date">Anda menemukan ornamen pada</string>
+    <string name="auth_error">Email atau Password Salah</string>
 </resources>

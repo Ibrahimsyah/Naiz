@@ -1,4 +1,4 @@
-package com.bccuwu.aic.core.config
+package com.bccowo.naiz.core.config
 
 object Extras {
     const val EXTRA_QUIZ = "EXTRA_QUIZ"
