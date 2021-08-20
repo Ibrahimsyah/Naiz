@@ -54,4 +54,20 @@
     <string name="candi_location">Lokasi Candi</string>
     <string name="candi_tidak_di_temukan">Candi Tidak di temukan</string>
     <string name="search_not_found_desc">Maaf candi yang anda maksud belum ditemukan, coba masukkan kata kunci lainnya :(</string>
+    <string name="candi_disimpan">Candi Disimpan</string>
+    <string name="all_bookmark_deleted">Seluruh candi terhapus dari bookmark</string>
+    <string name="bookmark_deleted">%1$s Terhapus dari Bookmark</string>
+    <string name="candi_assets">Candi assets</string>
+    <string name="scan_ornamen">Scan Ornamen</string>
+    <string name="rate_level_1">Tidak Bagus</string>
+    <string name="rate_level_2">Kurang Bagus</string>
+    <string name="rate_level_3">Cukup Bagus</string>
+    <string name="rate_level_4">Lumayan Bagus</string>
+    <string name="rate_level_5">Sangat bagus</string>
+    <string name="rating_title">Beri Rating Candi</string>
+    <string name="rating_continue">Konfirmasi</string>
+    <string name="ornament_image">Gambar Ornamen</string>
+    <string name="belum_ditemukan">Belum Ditemukan</string>
+    <string name="check_logo">Check Logo</string>
+    <string name="sudah_ditemukan">Sudah Ditemukan</string>
 </resources>

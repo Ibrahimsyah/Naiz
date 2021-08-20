@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bccowo.naiz.R
+import com.bccowo.naiz.core.ui.CandiListAdapter
 import com.bccowo.naiz.databinding.FragmentCandiListBinding
 import com.bccowo.naiz.domain.model.Candi
 import org.koin.androidx.viewmodel.ext.android.viewModel

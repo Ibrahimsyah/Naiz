@@ -3,17 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/drawable/bg_tab.xml" value="0.1" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/drawable/dialog_add_rating.xml" value="0.19538461538461538" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/drawable/dialog_quiz.xml" value="0.1984375" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/drawable/item_ornament.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detail_candi.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_onboarding.xml" value="0.2" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_splash.xml" value="0.15" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_delete_bookmarks.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_quiz.xml" value="0.1" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_bookmark.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_candi_list.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_map.xml" value="0.1015625" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_nearest_candi.xml" value="0.115625" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_onboarding.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_ornament.xml" value="0.115625" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_quiz.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/item_candi_grid.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/item_candi_list.xml" value="0.1" />
