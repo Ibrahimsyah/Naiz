@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  app:
+    env_file:
+      - .env
+    container_name: ${APP_NAME}
+    build: .
+    ports:
+      - "8080:8080"
+    restart: on-failure
