@@ -7,6 +7,7 @@ import com.bccowo.naiz.presentation.home.bookmark.BookmarkViewModel
 import com.bccowo.naiz.presentation.home.candilist.CandiListViewModel
 import com.bccowo.naiz.presentation.home.home.HomeViewModel
 import com.bccowo.naiz.presentation.home.quiz.QuizViewModel
+import com.bccowo.naiz.presentation.register.RegisterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { DetailCandiViewModel(get()) }
     viewModel { NearestCandiViewModel(get()) }
     viewModel { OrnamentViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
 }

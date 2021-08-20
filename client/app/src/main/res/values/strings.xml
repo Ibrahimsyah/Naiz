@@ -70,4 +70,8 @@
     <string name="belum_ditemukan">Belum Ditemukan</string>
     <string name="check_logo">Check Logo</string>
     <string name="sudah_ditemukan">Sudah Ditemukan</string>
+    <string name="register_success">Registrasi Berhasil, Silahkan Login</string>
+    <string name="phone_number">Nomor Telepon</string>
+    <string name="make_sure_all_form_filled">Pastikan Semua Kolom Terisi</string>
+    <string name="make_sure_confirmation_password_matched">Pastikan Konfirmasi Kata Sandi Sesuai</string>
 </resources>
