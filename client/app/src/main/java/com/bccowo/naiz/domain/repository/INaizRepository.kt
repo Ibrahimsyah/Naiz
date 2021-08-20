@@ -10,5 +10,7 @@ interface INaizRepository {
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)
+    suspend fun removeAllBookmarkedCandis()
+    fun getAllBookmarkedCandis(): LiveData<List<Candi>>
     fun checkCandiBookmarked(candiId: Int) : LiveData<Boolean>
 }

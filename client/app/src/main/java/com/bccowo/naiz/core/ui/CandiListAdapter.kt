@@ -1,5 +1,7 @@
 package com.bccowo.naiz.core.ui
 
+import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +13,11 @@ class CandiListAdapter(val onClickListener: (Candi) -> Unit) :
     RecyclerView.Adapter<CandiListAdapter.CandiListViewHolder>() {
     private val dataList: MutableList<Candi> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(dataList: List<Candi>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
-        notifyItemRangeChanged(0, dataList.size)
+        notifyDataSetChanged()
     }
 
     inner class CandiListViewHolder(val view: ItemCandiListBinding) :
