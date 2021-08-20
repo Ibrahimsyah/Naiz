@@ -78,4 +78,12 @@
     <string name="ornament_found_at">Anda menemukan ornamen pada %1$s</string>
     <string name="ornament_found_date">Anda menemukan ornamen pada</string>
     <string name="auth_error">Email atau Password Salah</string>
+    <string name="skip">Lewati</string>
+    <string name="quiz_image">Quiz Image</string>
+    <string name="next_question">Lanjut</string>
+    <string name="quiz_progress">%1$d/%2$d</string>
+    <string name="exit_quiz_description">Apakah anda yakin ingin keluar dari quiz? progress anda tidak akan tersimpan jika anda keluar</string>
+    <string name="exit_quiz_title">Ingin Keluar Dari Quiz?</string>
+    <string name="quiz_start_banner">Quiz Start Banner</string>
+    <string name="start_quiz">Mulai Quiz</string>
 </resources>

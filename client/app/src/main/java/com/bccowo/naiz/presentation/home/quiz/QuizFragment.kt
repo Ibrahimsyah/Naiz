@@ -12,9 +12,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bccowo.naiz.R
+import com.bccowo.naiz.core.config.EXTRAS.EXTRA_QUIZ
 import com.bccowo.naiz.databinding.DialogQuizBinding
 import com.bccowo.naiz.databinding.FragmentQuizBinding
 import com.bccowo.naiz.domain.model.Quiz
+import com.bccowo.naiz.presentation.quiz.StartQuizActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class QuizFragment : Fragment() {
@@ -52,7 +54,9 @@ class QuizFragment : Fragment() {
     }
 
     private fun playQuiz(quiz: Quiz) {
-
+        val intent = Intent(context, StartQuizActivity::class.java)
+        intent.putExtra(EXTRA_QUIZ, quiz)
+        startActivity(intent)
     }
 
     private fun showErrorQuizLocked() {

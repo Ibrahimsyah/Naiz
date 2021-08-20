@@ -27,6 +27,12 @@
         android:theme="@style/Theme.Naiz"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.quiz.StartQuizActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.quiz.QuizActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.detail_ornament.DetailOrnamentActivity"
             android:exported="true" />
         <activity

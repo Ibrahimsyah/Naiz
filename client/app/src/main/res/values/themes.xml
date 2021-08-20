@@ -81,4 +81,12 @@
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="ActionButtonStyle" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
 </resources>

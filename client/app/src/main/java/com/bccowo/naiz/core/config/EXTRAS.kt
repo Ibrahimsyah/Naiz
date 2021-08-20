@@ -1,5 +1,5 @@
 package com.bccowo.naiz.core.config
 
-object Extras {
+object EXTRAS {
     const val EXTRA_QUIZ = "EXTRA_QUIZ"
 }
