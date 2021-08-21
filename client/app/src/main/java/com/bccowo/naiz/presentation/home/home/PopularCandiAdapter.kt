@@ -1,5 +1,6 @@
 package com.bccowo.naiz.presentation.home.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
@@ -11,16 +12,17 @@ import com.bccowo.naiz.domain.model.Candi
 
 class PopularCandiAdapter(
     private val homeViewModel: HomeViewModel,
-    private val lifeCyclerOwner: LifecycleOwner,
+    private val lifecycleOwner: LifecycleOwner,
     private val onClickListener: (Candi) -> Unit,
     private val onBookmarkChange: (Candi, Boolean) -> Unit
 ) : RecyclerView.Adapter<PopularCandiAdapter.PopularCandiViewHolder>() {
     private val dataList: MutableList<Candi> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(dataList: List<Candi>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
-        notifyItemRangeChanged(0, dataList.size)
+        notifyDataSetChanged()
     }
 
     inner class PopularCandiViewHolder(private val view: ItemCandiGridBinding) :
@@ -35,7 +37,7 @@ class PopularCandiAdapter(
                     crossfade(true)
                 }
                 itemView.setOnClickListener { onClickListener(candi) }
-                homeViewModel.checkCandiBookmarked(candi.id).observe(lifeCyclerOwner, {
+                homeViewModel.checkCandiBookmarked(candi.id).observe(lifecycleOwner, {
                     isFavorite = it
                     val icon = if (it) R.drawable.ic_bookmark_active else R.drawable.ic_bookmark
                     view.fabBookmark.setImageResource(icon)

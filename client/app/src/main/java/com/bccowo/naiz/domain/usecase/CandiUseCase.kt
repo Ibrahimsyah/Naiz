@@ -13,7 +13,7 @@ interface CandiUseCase {
     suspend fun removeBookmark(candi: Candi)
     suspend fun removeAllBookmarks()
 
-    fun getPopularCandi(): LiveData<List<Candi>>
+    suspend fun getPopularCandi(accessToken: String): List<Candi>
     fun getCandiProgress(): LiveData<List<CandiProgress>>
     fun getAllCandi(): LiveData<List<Candi>>
 

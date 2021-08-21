@@ -10,6 +10,7 @@ import com.bccowo.naiz.domain.model.Candi
 interface INaizRepository {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse
     suspend fun loginUser(loginRequest: LoginRequest): LoginResponse
+    suspend fun getPopularCandi(accessToken: String): List<Candi>
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)

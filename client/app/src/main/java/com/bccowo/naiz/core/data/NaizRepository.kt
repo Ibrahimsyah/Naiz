@@ -24,6 +24,12 @@ class NaizRepository(
         return remoteDataSource.loginUser(loginRequest)
     }
 
+    override suspend fun getPopularCandi(accessToken: String): List<Candi> {
+        return remoteDataSource.getPopularCandi(accessToken).map {
+            Mapper.candiResponseToModel(it)
+        }
+    }
+
     override suspend fun addCandiToBookmark(candi: Candi) {
         val candiEntity = Mapper.candiModelToEntity(candi)
         localDataSource.insertBookmark(candiEntity)
