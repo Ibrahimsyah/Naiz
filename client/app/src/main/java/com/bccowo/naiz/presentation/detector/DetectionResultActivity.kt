@@ -1,57 +1,69 @@
-package com.bccowo.naiz.presentation.home
+package com.bccowo.naiz.presentation.detector
 
-import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.bccowo.naiz.R
 import com.bccowo.naiz.core.config.Storage.AUTHORITY
-import com.bccowo.naiz.databinding.ActivityHomeBinding
-import com.bccowo.naiz.presentation.detector.DetectorActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
+import com.bccowo.naiz.core.util.Extension.gone
+import com.bccowo.naiz.core.util.Extension.visible
+import com.bccowo.naiz.databinding.ActivityDetectionResultBinding
+import com.bccowo.naiz.presentation.home.HomeActivity
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Suppress("DEPRECATION")
-class HomeActivity : AppCompatActivity() {
+class DetectionResultActivity : AppCompatActivity() {
     companion object {
-        const val REQUEST_IMAGE_CAPTURE = 1
+        const val EXTRA_STATUS = "EXTRA_STATUS"
+        const val STATUS_SUCCESS = 1
+        const val STATUS_FAILED = 2
+        private const val SUCCESS_DELAY_MILS = 2000L
     }
 
     private var imagePath = ""
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityDetectionResultBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityDetectionResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val status = intent.getIntExtra(EXTRA_STATUS, STATUS_FAILED)
+        initViewByStatus(status)
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_home)
-        navView.setupWithNavController(navController)
+        if (status == STATUS_SUCCESS) {
+            Handler(mainLooper).postDelayed({
+                Toast.makeText(this, "To Result", Toast.LENGTH_SHORT).show()
+            }, SUCCESS_DELAY_MILS)
+        }
 
-        binding.fabCamera.setOnClickListener {
-            Dexter.withContext(this)
-                .withPermission(Manifest.permission.CAMERA)
-                .withListener(PermissionCallback())
-                .check()
+        with(binding) {
+            btnBackToHome.setOnClickListener { finish() }
+            btnRescan.setOnClickListener { launchCamera() }
         }
     }
+
+    private fun initViewByStatus(status: Int) {
+        val success = status == STATUS_SUCCESS
+        with(binding) {
+            successLogo.apply { if (success) visible() else gone() }
+            successDescription.apply { if (success) visible() else gone() }
+            scanResultTitle.apply { if (!success) visible() else gone() }
+            failedDescription.apply { if (!success) visible() else gone() }
+            failedLogo.apply { if (!success) visible() else gone() }
+            btnBackToHome.apply { if (!success) visible() else gone() }
+            btnRescan.apply { if (!success) visible() else gone() }
+        }
+    }
+
     private fun launchCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
@@ -67,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
                         it
                     )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                    startActivityForResult(takePictureIntent, HomeActivity.REQUEST_IMAGE_CAPTURE)
                 }
             }
         }
@@ -94,28 +106,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == HomeActivity.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             sendImagePathToDetector(imagePath)
-        }
-    }
-
-    inner class PermissionCallback : PermissionListener {
-        override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-            launchCamera()
-        }
-
-        override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-            Toast.makeText(
-                this@HomeActivity,
-                getString(R.string.camera_access_prompt),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        override fun onPermissionRationaleShouldBeShown(
-            p0: PermissionRequest?,
-            p1: PermissionToken?
-        ) {
+            finish()
         }
     }
 }

@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import coil.load
 import com.bccowo.naiz.R
-import com.bccowo.naiz.core.config.EXTRAS.EXTRA_QUIZ
+import com.bccowo.naiz.core.config.Extras.EXTRA_QUIZ
 import com.bccowo.naiz.databinding.ActivityQuizBinding
 import com.bccowo.naiz.databinding.DialogQuizBinding
 import com.bccowo.naiz.domain.model.Quiz

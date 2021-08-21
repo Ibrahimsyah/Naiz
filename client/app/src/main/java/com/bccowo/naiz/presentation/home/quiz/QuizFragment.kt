@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bccowo.naiz.R
-import com.bccowo.naiz.core.config.EXTRAS.EXTRA_QUIZ
+import com.bccowo.naiz.core.config.Extras.EXTRA_QUIZ
 import com.bccowo.naiz.databinding.DialogQuizBinding
 import com.bccowo.naiz.databinding.FragmentQuizBinding
 import com.bccowo.naiz.domain.model.Quiz

@@ -27,6 +27,15 @@
         android:theme="@style/Theme.Naiz"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.detector.DetectionResultActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.detector.DetectionDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.detector.DetectorActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.quiz.StartQuizActivity"
             android:exported="true" />
         <activity

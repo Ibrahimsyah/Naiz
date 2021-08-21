@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_navigation_home_to_bookmarkFragment"
             app:destination="@id/bookmarkFragment" />
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -28,5 +31,9 @@
         android:id="@+id/bookmarkFragment"
         android:name="com.bccowo.naiz.presentation.home.bookmark.BookmarkFragment"
         tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.bccowo.naiz.presentation.home.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

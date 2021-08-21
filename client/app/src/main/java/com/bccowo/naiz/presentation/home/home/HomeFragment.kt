@@ -3,11 +3,11 @@ package com.bccowo.naiz.presentation.home.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
@@ -78,6 +78,10 @@ class HomeFragment : Fragment() {
 
         binding.btnBookmark.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_bookmarkFragment)
+        }
+
+        binding.userPhoto.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_profile)
         }
     }
     private fun onProgressCandiClick(candiProgress: CandiProgress) {
