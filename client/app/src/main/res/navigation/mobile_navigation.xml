@@ -38,9 +38,16 @@
         <action
             android:id="@+id/action_profile_to_edit_password"
             app:destination="@id/editPasswordFragment"/>
+        <action
+            android:id="@+id/action_profile_to_edit_profile"
+            app:destination="@id/editProfileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/editPasswordFragment"
         android:name="com.bccowo.naiz.presentation.home.profile.edit_password.EditPasswordFragment"
         tools:layout="@layout/fragment_edit_password"/>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.bccowo.naiz.presentation.home.profile.edit_profile.EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile"/>
 </navigation>

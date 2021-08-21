@@ -20,7 +20,7 @@
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_onboarding.xml" value="0.2" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_quiz.xml" value="0.1" />
-        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_splash.xml" value="0.15" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_start_quiz.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_delete_bookmarks.xml" value="0.18229166666666666" />
@@ -29,6 +29,7 @@
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_bookmark.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_candi_list.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_edit_password.xml" value="0.16" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_edit_profile.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_map.xml" value="0.1015625" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/fragment_nearest_candi.xml" value="0.115625" />
