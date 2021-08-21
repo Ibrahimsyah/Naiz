@@ -95,4 +95,14 @@
     <string name="scanning_success_description">Horee, anda berhasil menemukan relief baru dari candi ini!!</string>
     <string name="scanning_success">Deteksi sukses</string>
     <string name="scanning_image">Memindai Gambar, Mohon tunggu beberapa saat</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_password">Ubah Kata Sandi</string>
+    <string name="about_app">Tentang Aplikasi</string>
+    <string name="logout">Keluar</string>
+    <string name="quiz">Quiz</string>
+    <string name="ornament">Ornament</string>
+    <string name="extension_icon">Extension Icon</string>
+    <string name="ornament_count_icon">Ornament Count Icon</string>
+    <string name="change_language">Ubah Bahasa</string>
 </resources>
