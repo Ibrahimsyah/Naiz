@@ -53,6 +53,9 @@ func (u *UserUseCase) SignIn(user *domain.UserSignInRequest, queries map[string]
 	}
 
 	return map[string]interface{}{
+		"id":    int8(result["id"].(float64)),
+		"name":  result["name"].(string),
+		"email": result["email"].(string),
 		"token": token,
 	}, nil
 }

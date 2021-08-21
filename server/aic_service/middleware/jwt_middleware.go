@@ -9,18 +9,17 @@ import (
 	"time"
 )
 
-func NewJWT(exp time.Duration, name, email string, id int8) (string, error) {
+func NewJWT(_ time.Duration, name, email string, id int8) (string, error) {
 	app, err := appService.ReadDriverAppService()
 	if err != nil {
 		return "", nil
 	}
 
-	expUNIX := time.Now().Add(time.Hour * exp).Unix()
+	//expUNIX := time.Now().Add(time.Hour * exp).Unix()
 	claims := &domain.CustomClaimJWT{
 		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: expUNIX,
-			Issuer:    "AIC_NAIZ",
-			Subject:   name,
+			Issuer:  "AIC_NAIZ",
+			Subject: name,
 		},
 		UserId: id,
 		Email:  email,
