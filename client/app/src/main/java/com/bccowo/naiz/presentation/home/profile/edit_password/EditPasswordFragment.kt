@@ -1,27 +1,26 @@
-package com.bccowo.naiz.presentation.home.profile
+package com.bccowo.naiz.presentation.home.profile.edit_password
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.bccowo.naiz.R
-import com.bccowo.naiz.databinding.FragmentProfileBinding
+import com.bccowo.naiz.databinding.FragmentEditPasswordBinding
 
-class ProfileFragment : Fragment() {
+class EditPasswordFragment : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
+    private var _binding : FragmentEditPasswordBinding? = null
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(inflater)
+        _binding = FragmentEditPasswordBinding.inflate(inflater)
         val navController = findNavController()
         with(binding.toolbar) {
             NavigationUI.setupWithNavController(this, navController)
@@ -33,22 +32,5 @@ class ProfileFragment : Fragment() {
             }
         }
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding) {
-            ornamentCount.text = "0"
-            quizCount.text = "0"
-        }
-
-        binding.menuEditPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_profile_to_edit_password)
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
