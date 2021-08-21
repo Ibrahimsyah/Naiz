@@ -15,7 +15,6 @@ func NewJWT(_ time.Duration, name, email string, id int8) (string, error) {
 		return "", nil
 	}
 
-	//expUNIX := time.Now().Add(time.Hour * exp).Unix()
 	claims := &domain.CustomClaimJWT{
 		StandardClaims: jwt.StandardClaims{
 			Issuer:  "AIC_NAIZ",
@@ -33,7 +32,7 @@ func NewJWT(_ time.Duration, name, email string, id int8) (string, error) {
 	return t, nil
 }
 
-func _(hashedToken string) (*domain.CustomClaimJWT, error) {
+func NewExtractToken(hashedToken string) (*domain.CustomClaimJWT, error) {
 	app, err := appService.ReadDriverAppService()
 	if err != nil {
 		return nil, err
