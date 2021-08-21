@@ -86,4 +86,13 @@
     <string name="exit_quiz_title">Ingin Keluar Dari Quiz?</string>
     <string name="quiz_start_banner">Quiz Start Banner</string>
     <string name="start_quiz">Mulai Quiz</string>
+    <string name="detector_image">Foto Deteksi</string>
+    <string name="back_to_homepage">Kembali ke Home Page</string>
+    <string name="rescan">Scan lagi</string>
+    <string name="result_failed_description">Maaf, terjadi kesalahan dalam mengidentifikasi relief atau gambar yang anda ambil bukan merupakan relief</string>
+    <string name="scan_result_title">Hasil Scan</string>
+    <string name="scan_failed">Deteksi Gagal</string>
+    <string name="scanning_success_description">Horee, anda berhasil menemukan relief baru dari candi ini!!</string>
+    <string name="scanning_success">Deteksi sukses</string>
+    <string name="scanning_image">Memindai Gambar, Mohon tunggu beberapa saat</string>
 </resources>

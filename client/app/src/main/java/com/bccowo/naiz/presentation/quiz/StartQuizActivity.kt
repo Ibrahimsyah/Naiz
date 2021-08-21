@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.bccowo.naiz.R
-import com.bccowo.naiz.core.config.EXTRAS.EXTRA_QUIZ
+import com.bccowo.naiz.core.config.Extras.EXTRA_QUIZ
 import com.bccowo.naiz.databinding.ActivityStartQuizBinding
 import com.bccowo.naiz.domain.model.Quiz
 
