@@ -24,11 +24,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Naiz">
+        android:theme="@style/Theme.Naiz"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".presentation.quiz.StartQuizActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.quiz.QuizActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.detail_ornament.DetailOrnamentActivity"
+            android:exported="true" />
         <activity
             android:name=".presentation.detail_candi.DetailCandiActivity"
-            android:theme="@style/DetailTheme"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/DetailTheme" />
         <activity
             android:name=".presentation.home.HomeActivity"
             android:exported="true"
@@ -62,6 +72,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />

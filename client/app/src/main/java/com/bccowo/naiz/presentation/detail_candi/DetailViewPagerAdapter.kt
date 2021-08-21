@@ -12,7 +12,7 @@ class DetailViewPagerAdapter(app: AppCompatActivity) : FragmentStateAdapter(app)
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = listOf(NearestCandiFragment(), MapFragment(), OrnamentFragment())
+        val fragment = listOf(OrnamentFragment(), MapFragment(), NearestCandiFragment())
         return fragment[position]
     }
 }

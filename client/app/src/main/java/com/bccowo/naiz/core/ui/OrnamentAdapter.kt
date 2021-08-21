@@ -1,4 +1,4 @@
-package com.bccowo.naiz.presentation.detail_candi.ornament
+package com.bccowo.naiz.core.ui
 
 import android.view.LayoutInflater
 import android.view.View
