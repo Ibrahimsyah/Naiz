@@ -1,5 +1,6 @@
 package com.bccowo.naiz.presentation.home.quiz
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,11 @@ class QuizAdapter(private val listener: (Quiz) -> Unit) :
     RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
     private val dataList: MutableList<Quiz> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(dataList: List<Quiz>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
-        notifyItemRangeChanged(0, dataList.size)
+        notifyDataSetChanged()
     }
 
     inner class QuizViewHolder(private val view: ItemQuizBinding) : RecyclerView.ViewHolder(view.root) {

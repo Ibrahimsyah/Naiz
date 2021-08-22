@@ -3,7 +3,10 @@ package com.bccowo.naiz.core.util
 import android.util.Log
 import com.bccowo.naiz.core.data.source.local.entities.CandiEntity
 import com.bccowo.naiz.core.data.source.remote.response.CandiResponse
+import com.bccowo.naiz.core.data.source.remote.response.QuizResponse
+import com.bccowo.naiz.core.data.source.remote.response.QuizResponseBody
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.Quiz
 
 object Mapper {
     fun candiModelToEntity(candi: Candi): CandiEntity {
@@ -52,6 +55,16 @@ object Mapper {
             rateCount,
             candiResponse.longitude.toDouble(),
             candiResponse.latitude.toDouble()
+        )
+    }
+
+    fun quizResponseToModel(quizResponse: QuizResponse): Quiz {
+        return Quiz(
+            quizResponse.id,
+            quizResponse.level,
+            quizResponse.description,
+            quizResponse.title,
+            "playable"
         )
     }
 }

@@ -22,7 +22,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SplashViewModel(get(), get()) }
     viewModel { HomeViewModel(get(), get()) }
-    viewModel { QuizViewModel(get()) }
+    viewModel { QuizViewModel(get(), get()) }
     viewModel { CandiListViewModel(get(), get()) }
     viewModel { BookmarkViewModel(get()) }
     viewModel { DetailCandiViewModel(get()) }
