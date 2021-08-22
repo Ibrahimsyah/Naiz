@@ -2,13 +2,13 @@ package com.bccowo.naiz.presentation.detail_candi
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.ActivityDetailCandiBinding
@@ -36,13 +36,14 @@ class DetailCandiActivity : AppCompatActivity() {
         with(binding) {
             candiImage.load(candi.image)
             candiAddress.text = candi.address
-            candiAssets.text = "10 Relief"
+            candiAssets.text = "0 Relief"
             candiName.text = candi.name
-            candiRatingText.text = "3.5 (1765 reviews)"
-            candiDescription.text = ""
+            candiRatingText.text =
+                String.format(getString(R.string.rating_template), candi.rating, candi.ratingCount)
+            candiDescription.text = candi.description
         }
 
-        val adapter = DetailViewPagerAdapter(this)
+        val adapter = DetailViewPagerAdapter(this, candi)
         binding.viewPager.adapter = adapter
         binding.viewPager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, index ->

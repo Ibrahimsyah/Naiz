@@ -21,10 +21,10 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get(), get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { QuizViewModel(get()) }
-    viewModel { CandiListViewModel(get()) }
+    viewModel { CandiListViewModel(get(), get()) }
     viewModel { BookmarkViewModel(get()) }
     viewModel { DetailCandiViewModel(get()) }
-    viewModel { NearestCandiViewModel(get()) }
+    viewModel { NearestCandiViewModel(get(), get()) }
     viewModel { OrnamentViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }

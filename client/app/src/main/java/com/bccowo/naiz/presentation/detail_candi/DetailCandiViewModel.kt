@@ -7,7 +7,9 @@ import com.bccowo.naiz.domain.usecase.CandiUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DetailCandiViewModel(private val candiUseCase: CandiUseCase) : ViewModel() {
+class DetailCandiViewModel(private val candiUseCase: CandiUseCase) :
+    ViewModel() {
+
     fun checkCandiBookmarked(id: Int) = candiUseCase.checkCandiBookmarked(id)
 
     fun addCandiToBookmark(candi: Candi) {

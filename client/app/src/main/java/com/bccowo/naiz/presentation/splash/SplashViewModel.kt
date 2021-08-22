@@ -15,10 +15,13 @@ class SplashViewModel(private val userUseCase: UserUseCase, private val pref: Sh
         val result = MutableLiveData<Boolean>(null)
         try {
             val token = pref.getString(SharedPreference.PREF_USER_TOKEN, "") as String
-            viewModelScope.launch {
-                userUseCase.checkCredentials(token)
+            if (token.isEmpty()) result.postValue(false)
+            else {
+                viewModelScope.launch {
+                    userUseCase.checkCredentials(token)
+                }
+                result.postValue(true)
             }
-            result.postValue(true)
         } catch (e: Exception) {
             result.postValue(false)
         }

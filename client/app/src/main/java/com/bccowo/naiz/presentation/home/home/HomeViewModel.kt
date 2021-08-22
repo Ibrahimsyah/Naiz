@@ -19,7 +19,7 @@ class HomeViewModel(private val candiUseCase: CandiUseCase, pref: SharedPreferen
     private val _popularCandiData: LiveData<List<Candi>> by lazy {
         val result = MutableLiveData<List<Candi>>()
         viewModelScope.launch {
-            val candiList = candiUseCase.getPopularCandi(accessToken)
+            val candiList = candiUseCase.getAllCandi(accessToken)
             result.postValue(candiList)
         }
         result

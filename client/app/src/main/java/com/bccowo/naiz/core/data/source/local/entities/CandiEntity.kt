@@ -8,7 +8,11 @@ data class CandiEntity(
     @PrimaryKey
     val id: Int,
     val name: String,
+    val description: String,
     val address: String,
     val image: String,
-    val rating: Double
+    val rating: Double,
+    val ratingCount: Int,
+    val longitude: Double,
+    val latitude: Double
 )
