@@ -9,13 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.FragmentProfileBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private val profileViewModel: ProfileViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +45,11 @@ class ProfileFragment : Fragment() {
             ornamentCount.text = "0"
             quizCount.text = "0"
         }
+
+        binding.userPhoto.load(profileViewModel.userPhoto) {
+            transformations(CircleCropTransformation())
+        }
+        binding.userName.text = profileViewModel.userName
 
         binding.menuEditPassword.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_edit_password)

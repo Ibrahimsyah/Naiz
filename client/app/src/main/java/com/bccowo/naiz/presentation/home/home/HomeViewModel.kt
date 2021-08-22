@@ -16,6 +16,7 @@ class HomeViewModel(private val candiUseCase: CandiUseCase, private val pref: Sh
     ViewModel() {
     private val accessToken = pref.getString(SharedPreference.PREF_USER_TOKEN, "") as String
     val userName get() = pref.getString(SharedPreference.PREF_USER_NAME, "")
+    val userPhoto get() = pref.getString(SharedPreference.PREF_USER_PHOTO, "")
 
     private val _popularCandiData: LiveData<List<Candi>> by lazy {
         val result = MutableLiveData<List<Candi>>()

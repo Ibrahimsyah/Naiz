@@ -38,8 +38,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dummyUserPhoto =
-            "https://i.pinimg.com/736x/80/cd/66/80cd662b2d7c0ae90ff1de1be49b36aa.jpg"
 
         popularCandiAdapter = PopularCandiAdapter(
             homeViewModel, viewLifecycleOwner,
@@ -62,7 +60,7 @@ class HomeFragment : Fragment() {
         binding.homeGreeting.text = greeting
         binding.userName.text = homeViewModel.userName
 
-        binding.userPhoto.load(dummyUserPhoto) {
+        binding.userPhoto.load(homeViewModel.userPhoto) {
             transformations(CircleCropTransformation())
         }
 

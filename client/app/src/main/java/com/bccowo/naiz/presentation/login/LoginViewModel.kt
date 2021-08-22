@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val userUseCase: UserUseCase, private val prefs: SharedPreferences) :
     ViewModel() {
+    private val userPhoto =
+        "https://i.pinimg.com/736x/80/cd/66/80cd662b2d7c0ae90ff1de1be49b36aa.jpg"
     private val _loading = MutableLiveData(false)
     private val _status = MutableLiveData(false)
 
@@ -32,6 +34,7 @@ class LoginViewModel(private val userUseCase: UserUseCase, private val prefs: Sh
                         putInt(SharedPreference.PREF_USER_ID, data.id)
                         putString(SharedPreference.PREF_USER_NAME, data.name)
                         putString(SharedPreference.PREF_USER_EMAIL, data.email)
+                        putString(SharedPreference.PREF_USER_PHOTO, userPhoto)
                         apply()
                     }
                 }
