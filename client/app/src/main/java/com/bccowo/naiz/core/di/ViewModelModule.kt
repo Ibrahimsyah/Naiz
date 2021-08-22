@@ -10,6 +10,7 @@ import com.bccowo.naiz.presentation.home.bookmark.BookmarkViewModel
 import com.bccowo.naiz.presentation.home.candilist.CandiListViewModel
 import com.bccowo.naiz.presentation.home.home.HomeViewModel
 import com.bccowo.naiz.presentation.home.profile.ProfileViewModel
+import com.bccowo.naiz.presentation.home.profile.edit_profile.EditProfileViewModel
 import com.bccowo.naiz.presentation.home.quiz.QuizViewModel
 import com.bccowo.naiz.presentation.login.LoginViewModel
 import com.bccowo.naiz.presentation.quiz.QuizEventViewModel
@@ -34,4 +35,5 @@ val viewModelModule = module {
     viewModel { QuizEventViewModel(get()) }
     viewModel { DetectorViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
+    viewModel { EditProfileViewModel(get(), get()) }
 }
