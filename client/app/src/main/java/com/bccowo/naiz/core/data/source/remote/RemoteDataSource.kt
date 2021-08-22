@@ -19,4 +19,9 @@ class RemoteDataSource(private val naizApi: NaizApi) {
         val auth = "Bearer $accessToken"
         return naizApi.getPopularCandi(auth).data
     }
+
+    suspend fun checkCredentials(accessToken: String) {
+        val auth = "Bearer $accessToken"
+        naizApi.checkCredentials(auth)
+    }
 }

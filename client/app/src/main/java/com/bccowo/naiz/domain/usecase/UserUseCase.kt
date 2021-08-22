@@ -8,4 +8,5 @@ import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 interface UserUseCase {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse
     suspend fun loginUser(loginRequest: LoginRequest): LoginResponse
+    suspend fun checkCredentials(accessToken: String)
 }

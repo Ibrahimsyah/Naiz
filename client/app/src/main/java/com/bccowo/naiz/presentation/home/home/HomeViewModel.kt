@@ -1,7 +1,6 @@
 package com.bccowo.naiz.presentation.home.home
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

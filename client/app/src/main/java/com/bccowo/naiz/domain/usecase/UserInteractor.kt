@@ -14,4 +14,8 @@ class UserInteractor(private val naizRepository: INaizRepository) : UserUseCase 
     override suspend fun loginUser(loginRequest: LoginRequest): LoginResponse {
         return naizRepository.loginUser(loginRequest)
     }
+
+    override suspend fun checkCredentials(accessToken: String) {
+        naizRepository.checkCredential(accessToken)
+    }
 }

@@ -21,4 +21,7 @@ interface NaizApi {
 
     @GET("/u/fetch/temples?select=id, name, address, image, rating: temple_reviews(rate)")
     suspend fun getPopularCandi(@Header("Authorization") authorization: String): CandiResponseBody
+
+    @GET("/u/fetch/users?select=id")
+    suspend fun checkCredentials(@Header("Authorization") authorization: String)
 }

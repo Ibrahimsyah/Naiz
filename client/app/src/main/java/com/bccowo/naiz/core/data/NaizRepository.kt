@@ -24,6 +24,10 @@ class NaizRepository(
         return remoteDataSource.loginUser(loginRequest)
     }
 
+    override suspend fun checkCredential(accessToken: String) {
+        remoteDataSource.checkCredentials(accessToken)
+    }
+
     override suspend fun getPopularCandi(accessToken: String): List<Candi> {
         return remoteDataSource.getPopularCandi(accessToken).map {
             Mapper.candiResponseToModel(it)

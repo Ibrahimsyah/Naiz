@@ -13,10 +13,12 @@ import com.bccowo.naiz.presentation.home.quiz.QuizViewModel
 import com.bccowo.naiz.presentation.login.LoginViewModel
 import com.bccowo.naiz.presentation.quiz.QuizEventViewModel
 import com.bccowo.naiz.presentation.register.RegisterViewModel
+import com.bccowo.naiz.presentation.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
+    viewModel { SplashViewModel(get(), get()) }
     viewModel { HomeViewModel(get(), get()) }
     viewModel { QuizViewModel(get()) }
     viewModel { CandiListViewModel(get()) }
