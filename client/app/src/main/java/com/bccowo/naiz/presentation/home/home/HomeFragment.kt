@@ -3,7 +3,6 @@ package com.bccowo.naiz.presentation.home.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +60,7 @@ class HomeFragment : Fragment() {
 
         val greeting = GreetingGenerator.generateGreeting(context as Context)
         binding.homeGreeting.text = greeting
+        binding.userName.text = homeViewModel.userName
 
         binding.userPhoto.load(dummyUserPhoto) {
             transformations(CircleCropTransformation())

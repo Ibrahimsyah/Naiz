@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bccowo.naiz.core.config.SharedPreference
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
+import com.bccowo.naiz.core.data.source.remote.response.LoginData
 import com.bccowo.naiz.domain.usecase.UserUseCase
 import kotlinx.coroutines.launch
 
@@ -25,9 +26,12 @@ class LoginViewModel(private val userUseCase: UserUseCase, private val prefs: Sh
             try {
                 val response = userUseCase.loginUser(loginRequest)
                 if (response.success) {
-                    val token = response.data?.token as String
+                    val data = response.data as LoginData
                     prefs.edit().apply {
-                        putString(SharedPreference.PREF_USER_TOKEN, token)
+                        putString(SharedPreference.PREF_USER_TOKEN, data.token)
+                        putInt(SharedPreference.PREF_USER_ID, data.id)
+                        putString(SharedPreference.PREF_USER_NAME, data.name)
+                        putString(SharedPreference.PREF_USER_EMAIL, data.email)
                         apply()
                     }
                 }

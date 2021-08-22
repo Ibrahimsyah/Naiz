@@ -12,9 +12,10 @@ import com.bccowo.naiz.domain.usecase.CandiUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val candiUseCase: CandiUseCase, pref: SharedPreferences) :
+class HomeViewModel(private val candiUseCase: CandiUseCase, private val pref: SharedPreferences) :
     ViewModel() {
     private val accessToken = pref.getString(SharedPreference.PREF_USER_TOKEN, "") as String
+    val userName get() = pref.getString(SharedPreference.PREF_USER_NAME, "")
 
     private val _popularCandiData: LiveData<List<Candi>> by lazy {
         val result = MutableLiveData<List<Candi>>()
