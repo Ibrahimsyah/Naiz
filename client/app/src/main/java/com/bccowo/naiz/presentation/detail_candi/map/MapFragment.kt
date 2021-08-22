@@ -74,13 +74,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             mapIntent.setPackage("com.google.android.apps.maps")
             activity?.startActivity(mapIntent)
         }
-        googleMap.uiSettings.apply {
-            isZoomControlsEnabled = true
-            isZoomGesturesEnabled = false
-            isScrollGesturesEnabled = false
-
-        }
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(candi))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(candi, 15.0f))
     }
 }

@@ -1,6 +1,7 @@
 package com.bccowo.naiz.presentation.home.bookmark
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.DialogDeleteBookmarksBinding
 import com.bccowo.naiz.databinding.FragmentBookmarkBinding
 import com.bccowo.naiz.core.ui.CandiListAdapter
+import com.bccowo.naiz.presentation.detail_candi.DetailCandiActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookmarkFragment : Fragment() {
@@ -50,7 +52,12 @@ class BookmarkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val candiListAdapter = CandiListAdapter {}
+        val candiListAdapter = CandiListAdapter {
+            val intent = Intent(context, DetailCandiActivity::class.java)
+            intent.putExtra(DetailCandiActivity.EXTRA_CANDI_DETAIL, it)
+            startActivity(intent)
+        }
+
         with(binding.rvBookmark) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
