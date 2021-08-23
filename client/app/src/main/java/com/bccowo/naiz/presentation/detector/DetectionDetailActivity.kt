@@ -9,6 +9,7 @@ import androidx.exifinterface.media.ExifInterface
 import coil.load
 import com.bccowo.naiz.databinding.ActivityDetectionDetailBinding
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.DetectionResult
 import java.io.File
 
 class DetectionDetailActivity : AppCompatActivity() {
@@ -21,10 +22,11 @@ class DetectionDetailActivity : AppCompatActivity() {
 
         val candi = intent.getParcelableExtra<Candi>(DetectionResultActivity.EXTRA_CANDI)
         val imagePath = intent.getStringExtra(DetectionResultActivity.EXTRA_IMAGE) as String
+        val result =
+            intent.getParcelableExtra<DetectionResult>(DetectionResultActivity.EXTRA_RESULT)
 
-        binding.ornamentName.text = "Relief Ari Darma"
-        binding.ornamentDescription.text =
-            "Menggambarkan terbebas-nya  naga  betina  dari  rudapaksa  naga  jantan dan pergi atau pulang menemui ayahnya yang  merupakan  raja  para  naga.  Naga  betina menceritakan  pada  ayahnya  budi  baik Ari Darma  yang  telah membebaskan dirinya dari perbuatan dosa dan aib yang memalukan. Gambaran relief untuk cerita ini adalah masih nampak suasana hutan. Selanjutnya nampak naga betina sedang bergerak dan menemui  seekor  naga  dalam  posisi  duduk dengan  ekor  menjulur  ke  atas.  Sosok  kedua naga ini menggambarkan sebagai bangsawan nampak pada mahkotanya, dan mahkota ayahnya  nampak  lebih  menandakan  sebagai raja"
+        binding.ornamentName.text = result?.name
+        binding.ornamentDescription.text = result?.description
         binding.ornamentAddress.text = candi?.address
 
         val imageFile = File(imagePath)

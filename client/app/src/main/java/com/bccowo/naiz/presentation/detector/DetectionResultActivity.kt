@@ -14,6 +14,7 @@ import com.bccowo.naiz.core.util.Extension.gone
 import com.bccowo.naiz.core.util.Extension.visible
 import com.bccowo.naiz.databinding.ActivityDetectionResultBinding
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.DetectionResult
 import com.bccowo.naiz.presentation.home.HomeActivity
 import java.io.File
 import java.io.IOException
@@ -26,6 +27,7 @@ class DetectionResultActivity : AppCompatActivity() {
         const val EXTRA_STATUS = "EXTRA_STATUS"
         const val EXTRA_CANDI = "EXTRA_CANDI"
         const val EXTRA_IMAGE = "EXTRA_IMAGE"
+        const val EXTRA_RESULT = "EXTRA_RESULT"
         const val STATUS_SUCCESS = 1
         const val STATUS_FAILED = 2
         private const val SUCCESS_DELAY_MILS = 2000L
@@ -45,10 +47,12 @@ class DetectionResultActivity : AppCompatActivity() {
         if (status == STATUS_SUCCESS) {
             val candi = intent.getParcelableExtra<Candi>(EXTRA_CANDI)
             val image = intent.getStringExtra(EXTRA_IMAGE)
+            val result = intent.getParcelableExtra<DetectionResult>(EXTRA_RESULT)
             Handler(mainLooper).postDelayed({
                 val intent = Intent(this, DetectionDetailActivity::class.java)
                 intent.putExtra(EXTRA_CANDI, candi)
                 intent.putExtra(EXTRA_IMAGE, image)
+                intent.putExtra(EXTRA_RESULT, result)
                 startActivity(intent)
                 finish()
             }, SUCCESS_DELAY_MILS)

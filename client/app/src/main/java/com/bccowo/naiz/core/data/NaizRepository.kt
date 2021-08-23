@@ -9,9 +9,7 @@ import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 import com.bccowo.naiz.core.util.Mapper
-import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.Quiz
-import com.bccowo.naiz.domain.model.QuizQuestion
+import com.bccowo.naiz.domain.model.*
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class NaizRepository(
@@ -49,6 +47,11 @@ class NaizRepository(
         return remoteDataSource.getQuizQuestions(accessToken, quizId).map {
             Mapper.quizQuestionsResponseToModel(it)
         }
+    }
+
+    override suspend fun predictImage(imagePath: String): DetectionResult {
+        val result = remoteDataSource.predictImage(imagePath)
+        return ML.getData(result)
     }
 
     override suspend fun addCandiToBookmark(candi: Candi) {

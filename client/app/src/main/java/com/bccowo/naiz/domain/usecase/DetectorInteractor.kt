@@ -1,10 +1,10 @@
 package com.bccowo.naiz.domain.usecase
 
-import android.graphics.Bitmap
+import com.bccowo.naiz.domain.model.DetectionResult
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class DetectorInteractor(private val naizRepository: INaizRepository): DetectorUseCase {
-    override suspend fun detectImage(image: Bitmap, token: String) {
-
+    override suspend fun detectImage(imagePath: String): DetectionResult {
+        return naizRepository.predictImage(imagePath)
     }
 }

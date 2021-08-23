@@ -59,7 +59,7 @@ class DetectorActivity : AppCompatActivity() {
 
         detectorViewModel.getCandiData().observe(this, {
             bottomSheetDialog.showData(it) { candi ->
-                detectorViewModel.detectImage(bitmap)
+                detectorViewModel.detectImage(imagePath)
                 selectedCandi = candi
                 true
             }
@@ -76,20 +76,20 @@ class DetectorActivity : AppCompatActivity() {
         detectorViewModel.loading.observe(this, {
             if (it) dialog.show() else dialog.cancel()
         })
+
         detectorViewModel.detectionResult.observe(this, {
             it?.let {
-                if (it) {
-                    val intent = Intent(this, DetectionResultActivity::class.java).apply {
-                        putExtra(
-                            DetectionResultActivity.EXTRA_STATUS,
-                            DetectionResultActivity.STATUS_SUCCESS
-                        )
-                        putExtra(DetectionResultActivity.EXTRA_CANDI, selectedCandi)
-                        putExtra(DetectionResultActivity.EXTRA_IMAGE, imagePath)
-                    }
-                    startActivity(intent)
-                    finish()
+                val intent = Intent(this, DetectionResultActivity::class.java).apply {
+                    putExtra(
+                        DetectionResultActivity.EXTRA_STATUS,
+                        DetectionResultActivity.STATUS_SUCCESS
+                    )
+                    putExtra(DetectionResultActivity.EXTRA_CANDI, selectedCandi)
+                    putExtra(DetectionResultActivity.EXTRA_IMAGE, imagePath)
+                    putExtra(DetectionResultActivity.EXTRA_RESULT, it)
                 }
+                startActivity(intent)
+                finish()
             }
         })
     }

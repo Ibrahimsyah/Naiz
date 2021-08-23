@@ -1,7 +1,7 @@
 package com.bccowo.naiz.domain.usecase
 
-import android.graphics.Bitmap
+import com.bccowo.naiz.domain.model.DetectionResult
 
 interface DetectorUseCase {
-    suspend fun detectImage(image: Bitmap, token: String)
+    suspend fun detectImage(imagePath: String): DetectionResult
 }

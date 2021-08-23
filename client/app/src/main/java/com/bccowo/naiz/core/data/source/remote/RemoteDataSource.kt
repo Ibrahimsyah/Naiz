@@ -1,10 +1,15 @@
 package com.bccowo.naiz.core.data.source.remote
 
+import android.util.Log
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
-class RemoteDataSource(private val naizApi: NaizApi) {
+class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: NaizMLApi) {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse {
         return naizApi.registerUser(registerRequest)
     }
@@ -38,5 +43,11 @@ class RemoteDataSource(private val naizApi: NaizApi) {
         val auth = "Bearer $accessToken"
         val searchQuery = "ilike.%$query%"
         return naizApi.searchCandi(auth, searchQuery).data
+    }
+
+    suspend fun predictImage(photoPath: String): String {
+        val requestFile = File(photoPath).asRequestBody("multipart/form-data".toMediaType())
+        val body = MultipartBody.Part.createFormData("relief_image", "image", requestFile)
+        return naizMLApi.predictImage(body).result
     }
 }

@@ -6,6 +6,7 @@ import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.DetectionResult
 import com.bccowo.naiz.domain.model.Quiz
 import com.bccowo.naiz.domain.model.QuizQuestion
 
@@ -17,6 +18,7 @@ interface INaizRepository {
     suspend fun searchCandi(accessToken: String, query: String): List<Candi>
     suspend fun getAllQuiz(accessToken: String): List<Quiz>
     suspend fun getQuizQuestions(accessToken: String, quizId: Int): List<QuizQuestion>
+    suspend fun predictImage(imagePath: String): DetectionResult
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)
