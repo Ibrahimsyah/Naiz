@@ -17,6 +17,8 @@ type UserRepository interface {
 }
 
 type UserUseCase interface {
+	// change password
+	// edit profile
 	CreateUser(u *UserSignUpRequest) error
 	SignIn(u *UserSignInRequest, queries map[string]string) (map[string]interface{}, error)
 }

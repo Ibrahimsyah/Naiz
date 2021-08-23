@@ -29,9 +29,5 @@ func (f *FetchHandler) FetchValues(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, custom_response.NewFailedResponse(err.Error()))
 	}
 
-	msg := "fetch data successfully"
-	if len(result) == 1 {
-		return c.JSON(http.StatusOK, custom_response.NewSucceedResponse(msg, result[0]))
-	}
-	return c.JSON(http.StatusOK, custom_response.NewSucceedResponse(msg, result))
+	return c.JSON(http.StatusOK, custom_response.NewSucceedResponse("fetch data successfully", result))
 }
