@@ -16,6 +16,13 @@ interface NaizApi {
     @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
     suspend fun getAllCandi(@Header("Authorization") authorization: String): CandiResponseBody
 
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
+    suspend fun searchCandi(
+        @Header("Authorization") authorization: String,
+        @Query("name") searchQuery: String
+    ): CandiResponseBody
+
+
     @GET("/u/fetch/users?select=id")
     suspend fun checkCredentials(@Header("Authorization") authorization: String)
 

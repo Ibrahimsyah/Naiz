@@ -33,4 +33,10 @@ class RemoteDataSource(private val naizApi: NaizApi) {
         val quizIdQuery = "eq.$quizId"
         return naizApi.getQuizQuestions(auth, quizIdQuery).data
     }
+
+    suspend fun searchCandi(accessToken: String, query: String): List<CandiResponse> {
+        val auth = "Bearer $accessToken"
+        val searchQuery = "ilike.%$query%"
+        return naizApi.searchCandi(auth, searchQuery).data
+    }
 }

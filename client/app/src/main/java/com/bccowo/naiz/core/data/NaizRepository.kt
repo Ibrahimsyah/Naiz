@@ -36,6 +36,11 @@ class NaizRepository(
         }
     }
 
+    override suspend fun searchCandi(accessToken: String, query: String): List<Candi> {
+        return remoteDataSource.searchCandi(accessToken, query)
+            .map { Mapper.candiResponseToModel(it) }
+    }
+
     override suspend fun getAllQuiz(accessToken: String): List<Quiz> {
         return remoteDataSource.getQuiz(accessToken).map { Mapper.quizResponseToModel(it) }
     }

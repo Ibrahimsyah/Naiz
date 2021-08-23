@@ -14,6 +14,7 @@ interface INaizRepository {
     suspend fun loginUser(loginRequest: LoginRequest): LoginResponse
     suspend fun checkCredential(accessToken: String)
     suspend fun getAllCandi(accessToken: String): List<Candi>
+    suspend fun searchCandi(accessToken: String, query: String): List<Candi>
     suspend fun getAllQuiz(accessToken: String): List<Quiz>
     suspend fun getQuizQuestions(accessToken: String, quizId: Int): List<QuizQuestion>
 

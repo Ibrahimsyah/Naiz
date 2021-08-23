@@ -1,7 +1,10 @@
 package com.bccowo.naiz.domain.usecase
 
 import androidx.lifecycle.LiveData
-import com.bccowo.naiz.domain.model.*
+import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.CandiProgress
+import com.bccowo.naiz.domain.model.Ornament
+import com.bccowo.naiz.domain.model.OrnamentDetail
 
 interface CandiUseCase {
     fun checkCandiBookmarked(candiId: Int): LiveData<Boolean>
@@ -11,6 +14,7 @@ interface CandiUseCase {
     suspend fun removeAllBookmarks()
 
     suspend fun getAllCandi(accessToken: String): List<Candi>
+    suspend fun searchCandi(accessToken: String, query: String): List<Candi>
     fun getCandiProgress(): LiveData<List<CandiProgress>>
 
     fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>>
