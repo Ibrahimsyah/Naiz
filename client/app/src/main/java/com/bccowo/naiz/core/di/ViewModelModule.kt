@@ -32,7 +32,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get(), get()) }
     viewModel { DetailOrnamentViewModel(get()) }
     viewModel { SimilarOrnamentViewModel(get()) }
-    viewModel { QuizEventViewModel(get()) }
+    viewModel { QuizEventViewModel(get(), get()) }
     viewModel { DetectorViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { EditProfileViewModel(get(), get()) }

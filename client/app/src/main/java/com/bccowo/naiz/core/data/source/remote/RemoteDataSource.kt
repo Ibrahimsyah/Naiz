@@ -2,10 +2,7 @@ package com.bccowo.naiz.core.data.source.remote
 
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
-import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
-import com.bccowo.naiz.core.data.source.remote.response.CandiResponse
-import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
-import com.bccowo.naiz.core.data.source.remote.response.QuizResponse
+import com.bccowo.naiz.core.data.source.remote.response.*
 
 class RemoteDataSource(private val naizApi: NaizApi) {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse {
@@ -29,5 +26,17 @@ class RemoteDataSource(private val naizApi: NaizApi) {
     suspend fun getQuiz(accessToken: String): List<QuizResponse> {
         val auth = "Bearer $accessToken"
         return naizApi.getQuiz(auth).data
+    }
+
+    suspend fun getQuizQuestions(accessToken: String, quizId: Int): List<QuizQuestionResponse> {
+        val auth = "Bearer $accessToken"
+        val quizIdQuery = "eq.$quizId"
+        return naizApi.getQuizQuestions(auth, quizIdQuery).data
+    }
+
+    suspend fun searchCandi(accessToken: String, query: String): List<CandiResponse> {
+        val auth = "Bearer $accessToken"
+        val searchQuery = "ilike.%$query%"
+        return naizApi.searchCandi(auth, searchQuery).data
     }
 }

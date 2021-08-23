@@ -11,6 +11,7 @@ import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 import com.bccowo.naiz.core.util.Mapper
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.Quiz
+import com.bccowo.naiz.domain.model.QuizQuestion
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class NaizRepository(
@@ -35,8 +36,19 @@ class NaizRepository(
         }
     }
 
+    override suspend fun searchCandi(accessToken: String, query: String): List<Candi> {
+        return remoteDataSource.searchCandi(accessToken, query)
+            .map { Mapper.candiResponseToModel(it) }
+    }
+
     override suspend fun getAllQuiz(accessToken: String): List<Quiz> {
         return remoteDataSource.getQuiz(accessToken).map { Mapper.quizResponseToModel(it) }
+    }
+
+    override suspend fun getQuizQuestions(accessToken: String, quizId: Int): List<QuizQuestion> {
+        return remoteDataSource.getQuizQuestions(accessToken, quizId).map {
+            Mapper.quizQuestionsResponseToModel(it)
+        }
     }
 
     override suspend fun addCandiToBookmark(candi: Candi) {

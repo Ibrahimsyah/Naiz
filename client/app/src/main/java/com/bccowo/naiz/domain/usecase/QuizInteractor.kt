@@ -9,37 +9,7 @@ class QuizInteractor(private val naizRepository: INaizRepository) : QuizUseCase 
         return naizRepository.getAllQuiz(accessToken)
     }
 
-    override fun getQuizQuestion(quizId: Int): List<QuizQuestion> {
-        return listOf(
-            QuizQuestion(
-                1,
-                "Question 1",
-                "https://s3.theasianparent.com/tap-assets-prod/wp-content/uploads/sites/24/2021/07/arca-4-768x380.jpg",
-                listOf("Option 1", "Option 2", "Option 3", "Option 4"),
-                2
-            ),
-            QuizQuestion(
-                2,
-                "Question 2",
-                null,
-                listOf("Option 1", "Option 2", "Option 3", "Option 4"),
-                0
-            ),
-            QuizQuestion(
-                3,
-                "Question 3",
-                null,
-                listOf("Option 1", "Option 2", "Option 3", "Option 4"),
-                1
-            ),
-            QuizQuestion(
-                4,
-                "Question 4",
-                "https://s3.theasianparent.com/tap-assets-prod/wp-content/uploads/sites/24/2021/07/arca-4-768x380.jpg",
-                listOf("Option 1", "Option 2", "Option 3", "Option 4"),
-                3
-            )
-        )
+    override suspend fun getQuizQuestion(accessToken: String, quizId: Int): List<QuizQuestion> {
+        return naizRepository.getQuizQuestions(accessToken, quizId)
     }
-
 }

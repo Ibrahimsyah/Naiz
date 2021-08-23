@@ -2,12 +2,13 @@ package com.bccowo.naiz.presentation.quiz
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.bccowo.naiz.R
 import com.bccowo.naiz.core.config.Extras.EXTRA_QUIZ
@@ -22,6 +23,8 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuizBinding
     private val quizEventViewModel: QuizEventViewModel by viewModel()
     private lateinit var questionData: List<QuizQuestion>
+    private lateinit var currentQuestion: QuizQuestion
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
@@ -29,44 +32,52 @@ class QuizActivity : AppCompatActivity() {
         initActionBar()
 
         val quiz = intent.getParcelableExtra<Quiz>(EXTRA_QUIZ) as Quiz
-        questionData = quizEventViewModel.getQuestions()
         var questionNumber = 1
-        val answerList = MutableList(questionData.size) { -1 }
+        var score = 0
+        var partialScore = 0
+        quizEventViewModel.getQuestions(quiz.id).observe(this, { it ->
+            questionData = it
+            binding.quizLevel.text = String.format(getString(R.string.quiz_level), quiz.level)
+            binding.quizProgress.max = it.size
+            partialScore = 100 / it.size
+            renderQuestion(questionNumber++)
+        })
 
-        binding.quizLevel.text = String.format(getString(R.string.quiz_level), quiz.level)
-        binding.quizProgress.max = questionData.size
-        renderQuestion(questionNumber++)
-        binding.quizChoices.setOnCheckedChangeListener { _, _ -> binding.btnNext.isEnabled = true }
+        binding.quizChoices.setOnCheckedChangeListener { _, checkedId ->
+            binding.btnNext.isEnabled = true
+        }
         binding.btnNext.setOnClickListener {
             if (questionNumber <= questionData.size) {
-                renderQuestion(questionNumber++)
                 val answer = when (binding.quizChoices.checkedRadioButtonId) {
-                    binding.quizChoice1.id -> 0
-                    binding.quizChoice2.id -> 1
-                    binding.quizChoice3.id -> 2
-                    binding.quizChoice4.id -> 3
+                    binding.choice1.id -> 0
+                    binding.choice2.id -> 1
+                    binding.choice3.id -> 2
+                    binding.choice4.id -> 3
                     else -> -1
                 }
-                answerList.add(answer)
+                Log.d("hehe", "q: $currentQuestion")
+                if (currentQuestion.choices[answer].isTrue) score += partialScore
+                renderQuestion(questionNumber++)
             } else {
-                Toast.makeText(this, "Over", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Over, Score: $score", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun renderQuestion(questionNumber: Int) {
         val question = questionData[questionNumber - 1]
+        currentQuestion = question
         with(binding) {
+            quizChoices.clearCheck()
             quizQuestion.text = question.question
             if (question.image != null) {
                 quizImageHolder.visibility = View.VISIBLE
                 quizImage.load(question.image)
             } else quizImageHolder.visibility = View.GONE
-            quizChoice1.text = question.choices[0]
-            quizChoice2.text = question.choices[1]
-            quizChoice3.text = question.choices[2]
-            quizChoice4.text = question.choices[3]
-            quizChoices.clearCheck()
+            choice1.text = question.choices[0].option
+            choice2.text = question.choices[1].option
+            choice3.text = question.choices[2].option
+            choice4.text = question.choices[3].option
             btnNext.isEnabled = false
             quizProgress.progress = questionNumber
             quizProgressText.text = String.format(

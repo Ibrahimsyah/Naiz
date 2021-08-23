@@ -3,10 +3,12 @@ package com.bccowo.naiz.core.util
 import android.util.Log
 import com.bccowo.naiz.core.data.source.local.entities.CandiEntity
 import com.bccowo.naiz.core.data.source.remote.response.CandiResponse
+import com.bccowo.naiz.core.data.source.remote.response.QuizQuestionResponse
 import com.bccowo.naiz.core.data.source.remote.response.QuizResponse
-import com.bccowo.naiz.core.data.source.remote.response.QuizResponseBody
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.Quiz
+import com.bccowo.naiz.domain.model.QuizOptions
+import com.bccowo.naiz.domain.model.QuizQuestion
 
 object Mapper {
     fun candiModelToEntity(candi: Candi): CandiEntity {
@@ -65,6 +67,20 @@ object Mapper {
             quizResponse.description,
             quizResponse.title,
             "playable"
+        )
+    }
+
+    fun quizQuestionsResponseToModel(quizQuestionResponse: QuizQuestionResponse): QuizQuestion {
+        val choices = quizQuestionResponse.options.map {
+            Log.d("hehe", "Mapper: $it")
+            QuizOptions(it.option, it.isTrue)
+        }
+
+        return QuizQuestion(
+            quizQuestionResponse.id,
+            quizQuestionResponse.question,
+            quizQuestionResponse.image,
+            choices
         )
     }
 }

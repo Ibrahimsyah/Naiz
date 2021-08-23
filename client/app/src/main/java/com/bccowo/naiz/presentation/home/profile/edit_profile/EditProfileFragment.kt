@@ -47,5 +47,6 @@ class EditProfileFragment : Fragment() {
 
         binding.edFullname.setText(editProfileViewModel.userName)
         binding.edEmail.setText(editProfileViewModel.userEmail)
+        binding.edPhoneNumber.setText(editProfileViewModel.userPhone)
     }
 }
