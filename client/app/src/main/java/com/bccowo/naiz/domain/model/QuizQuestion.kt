@@ -4,6 +4,10 @@ data class QuizQuestion(
     val id: Int,
     val question: String,
     val image: String?,
-    val choices: List<String>,
-    val answerIndex: Int
+    val choices: List<QuizOptions>,
+)
+
+data class QuizOptions(
+    val option: String,
+    val isTrue: Boolean
 )

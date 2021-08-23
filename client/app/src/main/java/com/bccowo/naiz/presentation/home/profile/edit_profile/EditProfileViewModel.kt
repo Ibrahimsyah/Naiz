@@ -12,4 +12,5 @@ class EditProfileViewModel(
     val userName get() = pref.getString(SharedPreference.PREF_USER_NAME, "")
     val userPhoto get() = pref.getString(SharedPreference.PREF_USER_PHOTO, "")
     val userEmail get() = pref.getString(SharedPreference.PREF_USER_EMAIL, "")
+    val userPhone get() = pref.getString(SharedPreference.PREF_USER_PHONE, "")
 }

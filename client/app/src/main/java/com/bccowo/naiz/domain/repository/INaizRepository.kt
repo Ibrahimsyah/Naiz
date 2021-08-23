@@ -7,6 +7,7 @@ import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.Quiz
+import com.bccowo.naiz.domain.model.QuizQuestion
 
 interface INaizRepository {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse
@@ -14,6 +15,7 @@ interface INaizRepository {
     suspend fun checkCredential(accessToken: String)
     suspend fun getAllCandi(accessToken: String): List<Candi>
     suspend fun getAllQuiz(accessToken: String): List<Quiz>
+    suspend fun getQuizQuestions(accessToken: String, quizId: Int): List<QuizQuestion>
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)

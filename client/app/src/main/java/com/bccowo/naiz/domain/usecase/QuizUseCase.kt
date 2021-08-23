@@ -5,5 +5,5 @@ import com.bccowo.naiz.domain.model.QuizQuestion
 
 interface QuizUseCase {
     suspend fun getQuiz(accessToken: String): List<Quiz>
-    fun getQuizQuestion(quizId: Int): List<QuizQuestion>
+    suspend fun getQuizQuestion(accessToken: String, quizId: Int): List<QuizQuestion>
 }

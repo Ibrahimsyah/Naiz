@@ -3,17 +3,14 @@ package com.bccowo.naiz.core.data.source.remote
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.*
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface NaizApi {
 
     @POST("/sign_up")
     suspend fun registerUser(@Body registerBody: RegisterRequest): BasicResponse
 
-    @POST("/sign_in?column=email,password,name,id")
+    @POST("/sign_in?column=email, password, name, id, phone")
     suspend fun loginUser(@Body loginBody: LoginRequest): LoginResponse
 
     @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
@@ -24,4 +21,10 @@ interface NaizApi {
 
     @GET("/u/fetch/quiz_packs")
     suspend fun getQuiz(@Header("Authorization") authorization: String): QuizResponseBody
+
+    @GET("/u/fetch/quiz_questions?select=question, image, options: quiz_options(option, is_true)")
+    suspend fun getQuizQuestions(
+        @Header("Authorization") authorization: String,
+        @Query("quiz_pack_id") quizId: String
+    ): QuizQuestionResponseBody
 }
