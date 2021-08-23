@@ -1,82 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".presentation.detail_ornament.DetailOrnamentActivity">
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_container"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            tools:context=".presentation.detail_ornament.DetailOrnamentActivity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    style="@style/FontH6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/scan_result" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ornament_image_holder"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <ImageView
+                    android:id="@+id/ornament_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ornament_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/location_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_location"
+                android:tint="@color/dark_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ornament_image_holder" />
 
             <TextView
-                style="@style/FontH6"
-                android:layout_width="wrap_content"
+                android:id="@+id/ornament_address"
+                style="@style/FontCaption"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_ornamen" />
-        </androidx.appcompat.widget.Toolbar>
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/location_icon"
+                app:layout_constraintLeft_toRightOf="@id/location_icon"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/location_icon"
+                tools:text="Candi Address" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/ornament_image_holder"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="5dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
+            <TextView
+                android:id="@+id/ornament_name"
+                style="@style/FontSubtitle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ornament_address"
+                tools:text="Arca Tribuana Tunggadewi" />
 
-            <ImageView
-                android:id="@+id/ornament_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/ornament_image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/ornament_description"
+                style="@style/FontCaption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ornament_name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/ornament_found_date"
-            style="@style/FontCaption"
-            android:layout_width="0dp"
+    <RelativeLayout
+        android:id="@+id/btn_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingVertical="20dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/btn_back_to_home"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ornament_image_holder"
-            tools:text="@string/ornament_found_date" />
-
-        <TextView
-            android:id="@+id/ornament_name"
-            style="@style/FontSubtitle1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ornament_found_date"
-            tools:text="Arca Tribuana Tunggadewi" />
-
-        <TextView
-            android:id="@+id/ornament_description"
-            style="@style/FontCaption"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ornament_name" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_btn_primary"
+            android:drawableLeft="@drawable/ic_home_black_24dp"
+            android:drawableTint="@color/white"
+            android:paddingHorizontal="20dp"
+            android:text="@string/back_to_homepage" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,7 +72,6 @@ object Mapper {
 
     fun quizQuestionsResponseToModel(quizQuestionResponse: QuizQuestionResponse): QuizQuestion {
         val choices = quizQuestionResponse.options.map {
-            Log.d("hehe", "Mapper: $it")
             QuizOptions(it.option, it.isTrue)
         }
 

@@ -12,7 +12,7 @@
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/drawable/item_ornament.xml" value="0.13177083333333334" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detail_candi.xml" value="0.25" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detail_ornament.xml" value="0.115625" />
-        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detection_detail.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detection_detail.xml" value="0.16" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detection_result.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_detector.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_home.xml" value="0.1" />
@@ -23,6 +23,7 @@
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_splash.xml" value="0.15" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/activity_start_quiz.xml" value="0.1" />
+        <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.16" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_delete_bookmarks.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_loading.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ibrah/AndroidStudioProjects/Naiz/client/app/src/main/res/layout/dialog_quiz.xml" value="0.1" />

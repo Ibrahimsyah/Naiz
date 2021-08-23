@@ -40,7 +40,7 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
 
     override fun getCandiProgress(): LiveData<List<CandiProgress>> {
         return liveData {
-            emit(List(5) {
+            emit(List(1) {
                 CandiProgress(
                     "Candi Prambanan",
                     "9/10",
@@ -52,7 +52,7 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
 
     override fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>> {
         return liveData {
-            emit(List(6) {
+            emit(List(1) {
                 val isFound = it % 2 == 0
                 Ornament(
                     1,
