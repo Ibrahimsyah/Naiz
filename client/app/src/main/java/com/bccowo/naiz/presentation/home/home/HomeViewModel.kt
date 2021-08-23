@@ -1,7 +1,6 @@
 package com.bccowo.naiz.presentation.home.home
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,14 +12,16 @@ import com.bccowo.naiz.domain.usecase.CandiUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val candiUseCase: CandiUseCase, pref: SharedPreferences) :
+class HomeViewModel(private val candiUseCase: CandiUseCase, private val pref: SharedPreferences) :
     ViewModel() {
     private val accessToken = pref.getString(SharedPreference.PREF_USER_TOKEN, "") as String
+    val userName get() = pref.getString(SharedPreference.PREF_USER_NAME, "")
+    val userPhoto get() = pref.getString(SharedPreference.PREF_USER_PHOTO, "")
 
     private val _popularCandiData: LiveData<List<Candi>> by lazy {
         val result = MutableLiveData<List<Candi>>()
         viewModelScope.launch {
-            val candiList = candiUseCase.getPopularCandi(accessToken)
+            val candiList = candiUseCase.getAllCandi(accessToken)
             result.postValue(candiList)
         }
         result

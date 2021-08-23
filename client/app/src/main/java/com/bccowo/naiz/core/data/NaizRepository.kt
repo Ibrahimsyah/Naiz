@@ -10,6 +10,7 @@ import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
 import com.bccowo.naiz.core.util.Mapper
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.Quiz
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class NaizRepository(
@@ -24,10 +25,18 @@ class NaizRepository(
         return remoteDataSource.loginUser(loginRequest)
     }
 
-    override suspend fun getPopularCandi(accessToken: String): List<Candi> {
-        return remoteDataSource.getPopularCandi(accessToken).map {
+    override suspend fun checkCredential(accessToken: String) {
+        remoteDataSource.checkCredentials(accessToken)
+    }
+
+    override suspend fun getAllCandi(accessToken: String): List<Candi> {
+        return remoteDataSource.getAllCandi(accessToken).map {
             Mapper.candiResponseToModel(it)
         }
+    }
+
+    override suspend fun getAllQuiz(accessToken: String): List<Quiz> {
+        return remoteDataSource.getQuiz(accessToken).map { Mapper.quizResponseToModel(it) }
     }
 
     override suspend fun addCandiToBookmark(candi: Candi) {

@@ -1,28 +1,49 @@
 package com.bccowo.naiz.presentation.detail_candi
 
+import android.Manifest
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.view.MenuItem
 import android.view.View
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import coil.load
 import com.bccowo.naiz.R
+import com.bccowo.naiz.core.config.Storage
 import com.bccowo.naiz.databinding.ActivityDetailCandiBinding
 import com.bccowo.naiz.databinding.DialogAddRatingBinding
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.presentation.detector.DetectorActivity
+import com.bccowo.naiz.presentation.home.HomeActivity
 import com.google.android.material.tabs.TabLayoutMediator
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailCandiActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_CANDI_DETAIL = "EXTRA_CANDI_DETAIL"
         val TAB_TITLES = listOf("Ornamen", "Tampilkan Peta", "Candi Terdekat")
+        const val REQUEST_IMAGE_CAPTURE = 1
     }
 
+    private var imagePath = ""
     private lateinit var binding: ActivityDetailCandiBinding
     private val detailCandiViewModel: DetailCandiViewModel by viewModel()
     private var isFavorite = false
@@ -36,13 +57,14 @@ class DetailCandiActivity : AppCompatActivity() {
         with(binding) {
             candiImage.load(candi.image)
             candiAddress.text = candi.address
-            candiAssets.text = "10 Relief"
+            candiAssets.text = "0 Relief"
             candiName.text = candi.name
-            candiRatingText.text = "3.5 (1765 reviews)"
-            candiDescription.text = ""
+            candiRatingText.text =
+                String.format(getString(R.string.rating_template), candi.rating, candi.ratingCount)
+            candiDescription.text = candi.description
         }
 
-        val adapter = DetailViewPagerAdapter(this)
+        val adapter = DetailViewPagerAdapter(this, candi)
         binding.viewPager.adapter = adapter
         binding.viewPager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, index ->
@@ -69,6 +91,13 @@ class DetailCandiActivity : AppCompatActivity() {
 
         binding.candiRatingText.setOnClickListener {
             actionAddRating()
+        }
+
+        binding.btnScan.setOnClickListener {
+            Dexter.withContext(this)
+                .withPermission(Manifest.permission.CAMERA)
+                .withListener(PermissionCallback())
+                .check()
         }
     }
 
@@ -122,5 +151,72 @@ class DetailCandiActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun launchCamera() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                val photoFile: File? = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                        this,
+                        Storage.AUTHORITY,
+                        it
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, HomeActivity.REQUEST_IMAGE_CAPTURE)
+                }
+            }
+        }
+    }
+
+    private fun createImageFile(): File {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", /* prefix */
+            ".jpg", /* suffix */
+            storageDir /* directory */
+        ).apply {
+            imagePath = absolutePath
+        }
+    }
+
+    private fun sendImagePathToDetector(path: String) {
+        val intent = Intent(this, DetectorActivity::class.java).apply {
+            putExtra(DetectorActivity.EXTRA_IMAGE_PATH, path)
+        }
+        startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == HomeActivity.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            sendImagePathToDetector(imagePath)
+        }
+    }
+
+    inner class PermissionCallback : PermissionListener {
+        override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
+            launchCamera()
+        }
+
+        override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+            Toast.makeText(
+                this@DetailCandiActivity,
+                getString(R.string.camera_access_prompt),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        override fun onPermissionRationaleShouldBeShown(
+            p0: PermissionRequest?,
+            p1: PermissionToken?
+        ) {
+        }
     }
 }

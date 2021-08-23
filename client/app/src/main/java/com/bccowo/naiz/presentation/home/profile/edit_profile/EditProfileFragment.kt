@@ -9,12 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.bccowo.naiz.databinding.FragmentEditProfileBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditProfileFragment : Fragment() {
 
     private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
+    private val editProfileViewModel: EditProfileViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,5 +36,16 @@ class EditProfileFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.userPhoto.load(editProfileViewModel.userPhoto) {
+            transformations(CircleCropTransformation())
+        }
+
+        binding.edFullname.setText(editProfileViewModel.userName)
+        binding.edEmail.setText(editProfileViewModel.userEmail)
     }
 }

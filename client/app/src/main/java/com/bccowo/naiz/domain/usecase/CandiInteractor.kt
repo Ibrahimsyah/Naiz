@@ -29,9 +29,10 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
         naizRepository.removeAllBookmarkedCandis()
     }
 
-    override suspend fun getPopularCandi(accessToken: String): List<Candi> {
-        return naizRepository.getPopularCandi(accessToken)
+    override suspend fun getAllCandi(accessToken: String): List<Candi> {
+        return naizRepository.getAllCandi(accessToken)
     }
+
 
     override fun getCandiProgress(): LiveData<List<CandiProgress>> {
         return liveData {
@@ -40,20 +41,6 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
                     "Candi Prambanan",
                     "9/10",
                     "https://inibaru.id/media/12275/large/normal/e1e09d11-a088-4e01-8025-7bfacc941142__large.jpg",
-                )
-            })
-        }
-    }
-
-    override fun getAllCandi(): LiveData<List<Candi>> {
-        return liveData {
-            emit(List(5) {
-                Candi(
-                    it,
-                    "Candi Prambanan",
-                    "Malang",
-                    "https://inibaru.id/media/12275/large/normal/e1e09d11-a088-4e01-8025-7bfacc941142__large.jpg",
-                    8.5,
                 )
             })
         }
