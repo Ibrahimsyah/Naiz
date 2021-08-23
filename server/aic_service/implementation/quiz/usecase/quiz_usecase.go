@@ -27,7 +27,7 @@ func (q *QuizUseCase) SubmitQuiz(userID int8, submitQuizRequest *domain.SubmitQu
 	}
 	userQuizPackID := int8(result["id"].(float64))
 	for _, val := range submitQuizRequest.SubmitQuizDetails {
-		if err := q.QuizRepositorySupabase.SubmitUserQuizAnswer(userQuizPackID, val.QuizOptionID); err != nil {
+		if err := q.QuizRepositorySupabase.SubmitUserQuizAnswer(userQuizPackID, val); err != nil {
 			return nil, err
 		}
 	}

@@ -1,12 +1,8 @@
 package domain
 
-type SubmitQuizDetail struct {
-	QuizOptionID int8 `json:"quiz_option_id"`
-}
-
 type SubmitQuizRequest struct {
-	QuizPackID        int8               `json:"quiz_pack_id"`
-	SubmitQuizDetails []SubmitQuizDetail `json:"submit_quiz_details"`
+	QuizPackID        int8   `json:"quiz_pack_id"`
+	SubmitQuizDetails []int8 `json:"submit_quiz_details"`
 }
 
 type QuizUseCase interface {
