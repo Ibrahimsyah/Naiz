@@ -7,10 +7,9 @@ type SubmitQuizRequest struct {
 
 type QuizUseCase interface {
 	// submit result quiz
-	SubmitQuizResult(userID int8, submitQuizRequest *SubmitQuizRequest) (map[string]interface{}, error)
+	SubmitQuizResult(userID int8, submitQuizRequest *SubmitQuizRequest) error
 }
 
 type QuizRepository interface {
-	SubmitUserQuizPack(userID, quizPackID int8) (map[string]interface{}, error)
-	SubmitUserQuizAnswer(userQuizPackID, quizOptionID int8) error
+	SubmitQuizResult(create map[string]string) error
 }

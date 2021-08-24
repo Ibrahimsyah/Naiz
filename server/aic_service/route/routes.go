@@ -7,6 +7,9 @@ import (
 	_quizHandler "github.com/Ibrahimsyah/Naiz/implementation/quiz/delivery/http"
 	_quizRepositorySupabase "github.com/Ibrahimsyah/Naiz/implementation/quiz/repository/supabase"
 	_quizUseCase "github.com/Ibrahimsyah/Naiz/implementation/quiz/usecase"
+	_templeHandler "github.com/Ibrahimsyah/Naiz/implementation/temple/delivery/http"
+	_templeRepositorySupabase "github.com/Ibrahimsyah/Naiz/implementation/temple/repository/supabase"
+	_templeUseCase "github.com/Ibrahimsyah/Naiz/implementation/temple/usecase"
 	_userHandler "github.com/Ibrahimsyah/Naiz/implementation/user/delivery/http"
 	_userRepositorySupabase "github.com/Ibrahimsyah/Naiz/implementation/user/repository/supabase"
 	_userUseCase "github.com/Ibrahimsyah/Naiz/implementation/user/usecase"
@@ -38,12 +41,15 @@ func NewRoute(e *echo.Echo, db *supabase.DriverSupabase, serviceMiddleware echoM
 	fetchRepositorySupabase := _fetchRepositorySupabase.NewFetchRepositorySupabase(db)
 	userRepositorySupabase := _userRepositorySupabase.NewUserRepositorySupabase(db)
 	quizRepositorySupabase := _quizRepositorySupabase.NewQuizRepositorySupabase(db)
+	templeRepositorySupabase := _templeRepositorySupabase.NewTempleRepositorySupabase(db)
 
 	userUseCase := _userUseCase.NewUserUseCase(userRepositorySupabase, fetchRepositorySupabase)
 	fetchUseCase := _fetchUseCase.NewFetchUseCase(fetchRepositorySupabase)
 	quizUseCase := _quizUseCase.NewQuizUseCase(quizRepositorySupabase)
+	templeUseCase := _templeUseCase.NewTempleUseCase(templeRepositorySupabase)
 
 	_userHandler.NewUserHanlder(e, userUseCase)
 	_fetchHandler.NewFetchHandler(userGroup, fetchUseCase)
 	_quizHandler.NewQuizHandler(userGroup, quizUseCase)
+	_templeHandler.NewTempleHandler(userGroup, templeUseCase)
 }
