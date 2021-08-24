@@ -112,4 +112,7 @@
     <string name="choose_candi">Pilih Candi</string>
     <string name="submit">Lanjutkan</string>
     <string name="scan_result">Hasil Scan</string>
+    <string name="your_score">Score anda</string>
+    <string name="quiz_success">Selamat anda menyelesaikan quiz dengan baik, coba selesaikan quiz-quiz menarik berikutnya!</string>
+    <string name="quiz_failed">Sayang sekali, sedikit lagi anda bisa melewati quiz ini. Yuk belajar lagi sehingga nilai anda meningkat. Jangan patah semangat!</string>
 </resources>

@@ -1,12 +1,11 @@
 package com.bccowo.naiz.presentation.quiz
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
@@ -55,11 +54,14 @@ class QuizActivity : AppCompatActivity() {
                     binding.choice4.id -> 3
                     else -> -1
                 }
-                Log.d("hehe", "q: $currentQuestion")
                 if (currentQuestion.choices[answer].isTrue) score += partialScore
                 renderQuestion(questionNumber++)
             } else {
-                Toast.makeText(this, "Over, Score: $score", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, QuizResultActivity::class.java)
+                intent.putExtra(QuizResultActivity.EXTRA_SCORE, score)
+                intent.putExtra(EXTRA_QUIZ, quiz)
+                startActivity(intent)
+                finish()
             }
         }
     }

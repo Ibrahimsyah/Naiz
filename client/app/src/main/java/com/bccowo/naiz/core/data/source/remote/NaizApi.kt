@@ -1,6 +1,7 @@
 package com.bccowo.naiz.core.data.source.remote
 
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
+import com.bccowo.naiz.core.data.source.remote.request.QuizResultRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.*
 import retrofit2.http.*
@@ -22,7 +23,6 @@ interface NaizApi {
         @Query("name") searchQuery: String
     ): CandiResponseBody
 
-
     @GET("/u/fetch/users?select=id")
     suspend fun checkCredentials(@Header("Authorization") authorization: String)
 
@@ -34,4 +34,10 @@ interface NaizApi {
         @Header("Authorization") authorization: String,
         @Query("quiz_pack_id") quizId: String
     ): QuizQuestionResponseBody
+
+    @POST("/u/quiz")
+    suspend fun submitQuizResult(
+        @Header("Authorization") authorization: String,
+        @Body quizResultRequest: QuizResultRequest
+    ) : BasicResponse
 }

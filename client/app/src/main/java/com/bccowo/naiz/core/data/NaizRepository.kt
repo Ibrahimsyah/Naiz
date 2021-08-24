@@ -54,6 +54,14 @@ class NaizRepository(
         return ML.getData(result)
     }
 
+    override suspend fun submitQuizResult(
+        quizId: Int,
+        score: Int,
+        accessToken: String
+    ): BasicResponse {
+        return remoteDataSource.submitQuizResult(quizId, score, accessToken)
+    }
+
     override suspend fun addCandiToBookmark(candi: Candi) {
         val candiEntity = Mapper.candiModelToEntity(candi)
         localDataSource.insertBookmark(candiEntity)

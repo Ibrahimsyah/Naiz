@@ -2,6 +2,7 @@ package com.bccowo.naiz.core.data.source.remote
 
 import android.util.Log
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
+import com.bccowo.naiz.core.data.source.remote.request.QuizResultRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -49,5 +50,11 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         val requestFile = File(photoPath).asRequestBody("multipart/form-data".toMediaType())
         val body = MultipartBody.Part.createFormData("relief_image", "image", requestFile)
         return naizMLApi.predictImage(body).result
+    }
+
+    suspend fun submitQuizResult(quizId: Int, score:Int, accessToken: String): BasicResponse{
+        val auth = "Bearer $accessToken"
+        val body = QuizResultRequest(quizId, score)
+        return naizApi.submitQuizResult(auth, body)
     }
 }
