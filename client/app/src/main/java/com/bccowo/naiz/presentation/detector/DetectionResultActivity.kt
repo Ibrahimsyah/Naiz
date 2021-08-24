@@ -30,7 +30,7 @@ class DetectionResultActivity : AppCompatActivity() {
         const val EXTRA_RESULT = "EXTRA_RESULT"
         const val STATUS_SUCCESS = 1
         const val STATUS_FAILED = 2
-        private const val SUCCESS_DELAY_MILS = 2000L
+        private const val SUCCESS_DELAY_MILS = 1000L
     }
 
     private var imagePath = ""

@@ -53,13 +53,14 @@ class DetectorActivity : AppCompatActivity() {
             }
             Bitmap.createBitmap(this, 0, 0, this.width, this.height, matrix, true)
         }
+
         binding.detectorImage.setImageBitmap(bitmap)
 
         val bottomSheetDialog = BottomSheetDialog.getInstance(supportFragmentManager) {}
 
         detectorViewModel.getCandiData().observe(this, {
             bottomSheetDialog.showData(it) { candi ->
-                detectorViewModel.detectImage(imagePath)
+                detectorViewModel.detectImage(this, bitmap)
                 selectedCandi = candi
                 true
             }
