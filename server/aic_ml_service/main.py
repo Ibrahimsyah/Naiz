@@ -22,7 +22,7 @@ app.add_middleware(
 def read_root(relief_image: UploadFile = File(...)):
     np.set_printoptions(suppress=True)
 
-    model = tf.keras.models.load_model('final_relief.h5')
+    model = tf.keras.models.load_model('model/final_relief.h5')
 
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
