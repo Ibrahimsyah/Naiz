@@ -34,6 +34,10 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
         return naizRepository.getAllCandi(accessToken)
     }
 
+    override suspend fun getRelatedCandi(candiId: Int, accessToken: String): List<Candi> {
+        return naizRepository.getRelatedCandi(candiId, accessToken)
+    }
+
     override suspend fun searchCandi(accessToken: String, query: String): List<Candi> {
         return naizRepository.searchCandi(accessToken, query)
     }

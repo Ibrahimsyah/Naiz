@@ -23,6 +23,12 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         return naizApi.getAllCandi(auth).data
     }
 
+    suspend fun getRelatedCandi(candiId: Int, accessToken: String): List<CandiResponse> {
+        val auth = "Bearer $accessToken"
+        val candiIdQuery = "neq.${candiId}"
+        return naizApi.getRelatedCandi(auth, candiIdQuery).data
+    }
+
     suspend fun checkCredentials(accessToken: String) {
         val auth = "Bearer $accessToken"
         naizApi.checkCredentials(auth)

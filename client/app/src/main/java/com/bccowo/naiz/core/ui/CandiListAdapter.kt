@@ -28,7 +28,7 @@ class CandiListAdapter(val onClickListener: (Candi) -> Unit) :
             with(view) {
                 candiName.text = candi.name
                 candiRating.rating = candi.rating.toFloat()
-                candiRatingText.text = candi.rating.toString()
+                candiRatingText.text = String.format("%.1f", candi.rating)
                 candiAddress.text = candi.address
                 candiImage.load(candi.image) {
                     crossfade(true)

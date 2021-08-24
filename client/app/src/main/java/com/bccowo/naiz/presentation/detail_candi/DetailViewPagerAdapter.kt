@@ -1,6 +1,5 @@
 package com.bccowo.naiz.presentation.detail_candi
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -16,7 +15,8 @@ class DetailViewPagerAdapter(app: AppCompatActivity, private val candi: Candi) :
 
     override fun createFragment(position: Int): Fragment {
         val mapFragment = MapFragment.createInstance(candi.longitude, candi.latitude)
-        val fragment = listOf(OrnamentFragment(), mapFragment, NearestCandiFragment())
+        val nearestCandiFragment = NearestCandiFragment.getInstance(candi.id)
+        val fragment = listOf(OrnamentFragment(), mapFragment, nearestCandiFragment)
         return fragment[position]
     }
 }

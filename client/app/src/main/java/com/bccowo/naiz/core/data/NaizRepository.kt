@@ -34,6 +34,12 @@ class NaizRepository(
         }
     }
 
+    override suspend fun getRelatedCandi(candiId: Int, accessToken: String): List<Candi> {
+        return remoteDataSource.getRelatedCandi(candiId, accessToken).map {
+            Mapper.candiResponseToModel(it)
+        }
+    }
+
     override suspend fun searchCandi(accessToken: String, query: String): List<Candi> {
         return remoteDataSource.searchCandi(accessToken, query)
             .map { Mapper.candiResponseToModel(it) }

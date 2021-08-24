@@ -15,6 +15,7 @@ interface CandiUseCase {
     suspend fun removeAllBookmarks()
 
     suspend fun getAllCandi(accessToken: String): List<Candi>
+    suspend fun getRelatedCandi(candiId: Int, accessToken: String): List<Candi>
     suspend fun searchCandi(accessToken: String, query: String): List<Candi>
     fun getCandiProgress(): LiveData<List<CandiProgress>>
     suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse
