@@ -1,6 +1,5 @@
 package com.bccowo.naiz.core.data.source.remote
 
-import android.util.Log
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.QuizResultRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
@@ -52,9 +51,14 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         return naizMLApi.predictImage(body).result
     }
 
-    suspend fun submitQuizResult(quizId: Int, score:Int, accessToken: String): BasicResponse{
+    suspend fun submitQuizResult(quizId: Int, score: Int, accessToken: String): BasicResponse {
         val auth = "Bearer $accessToken"
         val body = QuizResultRequest(quizId, score)
         return naizApi.submitQuizResult(auth, body)
+    }
+
+    suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse {
+        val auth = "Bearer $accessToken"
+        return naizApi.submitReview(auth, candiId, rate)
     }
 }

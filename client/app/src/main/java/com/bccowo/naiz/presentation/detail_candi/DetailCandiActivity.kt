@@ -46,6 +46,7 @@ class DetailCandiActivity : AppCompatActivity() {
     private var imagePath = ""
     private lateinit var binding: ActivityDetailCandiBinding
     private val detailCandiViewModel: DetailCandiViewModel by viewModel()
+    private lateinit var candi: Candi
     private var isFavorite = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class DetailCandiActivity : AppCompatActivity() {
         initView()
         initToolbar()
 
-        val candi = intent.getParcelableExtra<Candi>(EXTRA_CANDI_DETAIL) as Candi
+        candi = intent.getParcelableExtra<Candi>(EXTRA_CANDI_DETAIL) as Candi
         with(binding) {
             candiImage.load(candi.image)
             candiAddress.text = candi.address
@@ -141,7 +142,9 @@ class DetailCandiActivity : AppCompatActivity() {
             alertDialog.cancel()
         }
         view.btnConfirmRating.setOnClickListener {
-            Toast.makeText(this, "Rating Given: $ratingInt", Toast.LENGTH_SHORT).show()
+            detailCandiViewModel.submitCandiReview(candi.id, ratingInt).observe(this, {
+                Toast.makeText(this, "Rating berhasil diberikan!", Toast.LENGTH_SHORT).show()
+            })
             alertDialog.cancel()
         }
     }

@@ -25,7 +25,7 @@ val viewModelModule = module {
     viewModel { QuizViewModel(get(), get()) }
     viewModel { CandiListViewModel(get(), get()) }
     viewModel { BookmarkViewModel(get()) }
-    viewModel { DetailCandiViewModel(get()) }
+    viewModel { DetailCandiViewModel(get(), get()) }
     viewModel { NearestCandiViewModel(get(), get()) }
     viewModel { OrnamentViewModel(get()) }
     viewModel { RegisterViewModel(get()) }

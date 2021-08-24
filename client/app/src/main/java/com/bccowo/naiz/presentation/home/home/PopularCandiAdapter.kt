@@ -32,7 +32,7 @@ class PopularCandiAdapter(
             with(view) {
                 candiName.text = candi.name
                 candiRating.rating = candi.rating.toFloat()
-                candiRatingText.text = candi.rating.toString()
+                candiRatingText.text = String.format("%.1f", candi.rating)
                 candiImage.load(candi.image) {
                     crossfade(true)
                 }

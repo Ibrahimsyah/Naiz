@@ -2,6 +2,7 @@ package com.bccowo.naiz.domain.usecase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.CandiProgress
 import com.bccowo.naiz.domain.model.Ornament
@@ -48,6 +49,14 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
                 )
             })
         }
+    }
+
+    override suspend fun submitCandiReview(
+        candiId: Int,
+        rate: Int,
+        accessToken: String
+    ): BasicResponse {
+        return naizRepository.submitCandiReview(candiId, rate, accessToken)
     }
 
     override fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>> {

@@ -40,4 +40,11 @@ interface NaizApi {
         @Header("Authorization") authorization: String,
         @Body quizResultRequest: QuizResultRequest
     ) : BasicResponse
+
+    @POST("/u/temple/review")
+    suspend fun submitReview(
+        @Header("Authorization") authorization: String,
+        @Query("temple_id") templeId: Int,
+        @Query("rate") rate: Int
+    ) : BasicResponse
 }
