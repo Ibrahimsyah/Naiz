@@ -14,5 +14,13 @@ data class CandiEntity(
     val rating: Double,
     val ratingCount: Int,
     val longitude: Double,
-    val latitude: Double
+    val latitude: Double,
+    val reliefs: List<Relief>
+)
+
+data class Relief(
+    val id: Int,
+    val name: String,
+    val description: String,
+    val image: String
 )

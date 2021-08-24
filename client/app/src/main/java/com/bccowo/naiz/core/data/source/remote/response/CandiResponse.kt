@@ -12,7 +12,19 @@ data class CandiResponse(
     val image: String,
     val longitude: String,
     val latitude: String,
-    val rating: List<CandiRating>
+    val rating: List<CandiRating>,
+    val reliefs: List<Reliefs>
+)
+
+data class Reliefs(
+    val id: Int,
+    val detail: ReliefDetail
+)
+
+data class ReliefDetail(
+    val description: String,
+    val image: String,
+    val name: String
 )
 
 data class CandiRating(

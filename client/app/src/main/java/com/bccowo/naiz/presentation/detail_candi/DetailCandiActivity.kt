@@ -58,7 +58,7 @@ class DetailCandiActivity : AppCompatActivity() {
         with(binding) {
             candiImage.load(candi.image)
             candiAddress.text = candi.address
-            candiAssets.text = "0 Relief"
+            "${candi.reliefs.size} Relief".also { candiAssets.text = it }
             candiName.text = candi.name
             candiRatingText.text =
                 String.format(getString(R.string.rating_template), candi.rating, candi.ratingCount)

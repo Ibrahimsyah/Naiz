@@ -1,18 +1,17 @@
 package com.bccowo.naiz.core.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bccowo.naiz.databinding.ItemOrnamentBinding
-import com.bccowo.naiz.domain.model.Ornament
+import com.bccowo.naiz.domain.model.Relief
 
-class OrnamentAdapter(private val listener: (Ornament) -> Unit) :
+class OrnamentAdapter(private val listener: (Relief) -> Unit) :
     RecyclerView.Adapter<OrnamentAdapter.OrnamentViewHolder>() {
-    private val dataList: MutableList<Ornament> = mutableListOf()
+    private val dataList: MutableList<Relief> = mutableListOf()
 
-    fun setData(dataList: List<Ornament>) {
+    fun setData(dataList: List<Relief>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
         notifyItemRangeChanged(0, dataList.size)
@@ -20,13 +19,10 @@ class OrnamentAdapter(private val listener: (Ornament) -> Unit) :
 
     inner class OrnamentViewHolder(val view: ItemOrnamentBinding) :
         RecyclerView.ViewHolder(view.root) {
-        fun bind(ornament: Ornament) {
+        fun bind(ornament: Relief) {
             with(view) {
                 ornamentName.text = ornament.name
                 ornamentImage.load(ornament.image)
-                tvFound.visibility = if (ornament.isFound) View.VISIBLE else View.GONE
-                foundLogo.visibility = if (ornament.isFound) View.VISIBLE else View.GONE
-                tvNotFound.visibility = if (!ornament.isFound) View.VISIBLE else View.GONE
             }
             itemView.setOnClickListener { listener(ornament) }
         }

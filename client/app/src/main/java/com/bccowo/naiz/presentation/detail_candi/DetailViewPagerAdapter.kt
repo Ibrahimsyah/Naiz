@@ -14,9 +14,10 @@ class DetailViewPagerAdapter(app: AppCompatActivity, private val candi: Candi) :
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
+        val ornamentFragment = OrnamentFragment.createInstance(candi.reliefs)
         val mapFragment = MapFragment.createInstance(candi.longitude, candi.latitude)
         val nearestCandiFragment = NearestCandiFragment.getInstance(candi.id)
-        val fragment = listOf(OrnamentFragment(), mapFragment, nearestCandiFragment)
+        val fragment = listOf(ornamentFragment, mapFragment, nearestCandiFragment)
         return fragment[position]
     }
 }

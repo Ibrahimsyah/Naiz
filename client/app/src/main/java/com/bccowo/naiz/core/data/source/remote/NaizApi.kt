@@ -14,16 +14,16 @@ interface NaizApi {
     @POST("/sign_in?column=email, password, name, id, phone")
     suspend fun loginUser(@Body loginBody: LoginRequest): LoginResponse
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun getAllCandi(@Header("Authorization") authorization: String): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun getRelatedCandi(
         @Header("Authorization") authorization: String,
         @Query("id") candiIdQuery: String
     ): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate)")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun searchCandi(
         @Header("Authorization") authorization: String,
         @Query("name") searchQuery: String

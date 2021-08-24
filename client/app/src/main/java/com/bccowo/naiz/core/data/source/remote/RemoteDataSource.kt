@@ -51,10 +51,10 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         return naizApi.searchCandi(auth, searchQuery).data
     }
 
-    suspend fun predictImage(photoPath: String): String {
+    suspend fun predictImage(photoPath: String): PredictResponse {
         val requestFile = File(photoPath).asRequestBody("multipart/form-data".toMediaType())
         val body = MultipartBody.Part.createFormData("relief_image", "image", requestFile)
-        return naizMLApi.predictImage(body).result
+        return naizMLApi.predictImage(body)
     }
 
     suspend fun submitQuizResult(quizId: Int, score: Int, accessToken: String): BasicResponse {
