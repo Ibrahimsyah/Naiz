@@ -2,7 +2,6 @@ package com.bccowo.naiz.core.di
 
 import com.bccowo.naiz.presentation.detail_candi.DetailCandiViewModel
 import com.bccowo.naiz.presentation.detail_candi.nearest_candi.NearestCandiViewModel
-import com.bccowo.naiz.presentation.detail_candi.ornament.OrnamentViewModel
 import com.bccowo.naiz.presentation.detail_ornament.DetailOrnamentViewModel
 import com.bccowo.naiz.presentation.detail_ornament.similar_ornament.SimilarOrnamentViewModel
 import com.bccowo.naiz.presentation.detector.DetectorViewModel
@@ -27,7 +26,6 @@ val viewModelModule = module {
     viewModel { BookmarkViewModel(get()) }
     viewModel { DetailCandiViewModel(get(), get()) }
     viewModel { NearestCandiViewModel(get(), get()) }
-    viewModel { OrnamentViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
     viewModel { DetailOrnamentViewModel(get()) }

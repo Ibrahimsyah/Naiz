@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
-import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.ActivityDetailOrnamentBinding
+import com.bccowo.naiz.domain.model.Relief
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailOrnamentActivity : AppCompatActivity() {
     companion object {
-        const val EXTRA_ORNAMENT_ID = "ORNAMENT_ID"
+        const val EXTRA_ORNAMENT = "ORNAMENT"
         private val TAB_TITLES = arrayOf("Kemiripan", "Ornamen Lainnya")
     }
 
@@ -28,16 +28,12 @@ class DetailOrnamentActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val ornamentId = intent.getIntExtra(EXTRA_ORNAMENT_ID, -1)
-        detailOrnamentViewModel.getDetailOrnament(ornamentId).observe(this, {
-            with(binding) {
-                ornamentImage.load(it.image)
-                ornamentName.text = it.name
-                ornamentFoundDate.text =
-                    String.format(getString(R.string.ornament_found_at), it.foundAt)
-                ornamentDescription.text = it.description
-            }
-        })
+        val ornament = intent.getParcelableExtra<Relief>(EXTRA_ORNAMENT) as Relief
+        with(binding) {
+            ornamentImage.load(ornament.image)
+            ornamentName.text = ornament.name
+            ornamentDescription.text = ornament.description
+        }
 
         val detailOrnamentViewPagerAdapter = DetailOrnamentViewPagerAdapter(this)
         binding.viewpager.adapter = detailOrnamentViewPagerAdapter

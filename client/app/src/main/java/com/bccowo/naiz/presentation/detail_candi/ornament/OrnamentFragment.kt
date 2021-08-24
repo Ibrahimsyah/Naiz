@@ -1,5 +1,6 @@
 package com.bccowo.naiz.presentation.detail_candi.ornament
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bccowo.naiz.core.ui.OrnamentAdapter
 import com.bccowo.naiz.databinding.FragmentOrnamentBinding
+import com.bccowo.naiz.domain.model.OrnamentDetail
 import com.bccowo.naiz.domain.model.Relief
+import com.bccowo.naiz.presentation.detail_ornament.DetailOrnamentActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrnamentFragment : Fragment() {
@@ -28,7 +31,6 @@ class OrnamentFragment : Fragment() {
     }
     private var _binding: FragmentOrnamentBinding? = null
     private val binding get() = _binding!!
-    private val ornamentViewModel: OrnamentViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +44,11 @@ class OrnamentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val ornamentAdapter = OrnamentAdapter {
+            val intent = Intent(context, DetailOrnamentActivity::class.java)
+            intent.putExtra(DetailOrnamentActivity.EXTRA_ORNAMENT, it)
+            startActivity(intent)
         }
+
         with(binding.rvOrnament) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
