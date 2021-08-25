@@ -11,4 +11,5 @@ val mainModule = module {
     single<QuizUseCase> { QuizInteractor(get()) }
     single<UserUseCase> { UserInteractor(get()) }
     single<DetectorUseCase> { DetectorInteractor(get()) }
+    single<ReliefUseCase> { ReliefInteractor(get()) }
 }

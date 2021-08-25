@@ -5,10 +5,7 @@ import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.core.data.source.remote.response.LoginResponse
-import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.DetectionResult
-import com.bccowo.naiz.domain.model.Quiz
-import com.bccowo.naiz.domain.model.QuizQuestion
+import com.bccowo.naiz.domain.model.*
 
 interface INaizRepository {
     suspend fun registerUser(registerRequest: RegisterRequest): BasicResponse
@@ -24,6 +21,8 @@ interface INaizRepository {
     suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse
     suspend fun submitCandiScan(candiId: Int, accessToken: String): BasicResponse
     suspend fun getCandiScanCount(candiId: Int, userId: Int, accessToken: String): Int
+    suspend fun getSimilarRelief(reliefName: String, accessToken: String): List<Relief>
+    suspend fun getOtherRelief(candiId: Int, accessToken: String): List<Relief>
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)

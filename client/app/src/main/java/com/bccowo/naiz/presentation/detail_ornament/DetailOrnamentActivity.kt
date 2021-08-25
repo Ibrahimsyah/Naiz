@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.bccowo.naiz.core.ui.OrnamentViewPagerAdapter
 import com.bccowo.naiz.databinding.ActivityDetailOrnamentBinding
 import com.bccowo.naiz.domain.model.Relief
 import com.google.android.material.tabs.TabLayoutMediator
@@ -35,7 +36,7 @@ class DetailOrnamentActivity : AppCompatActivity() {
             ornamentDescription.text = ornament.description
         }
 
-        val detailOrnamentViewPagerAdapter = DetailOrnamentViewPagerAdapter(this)
+        val detailOrnamentViewPagerAdapter = OrnamentViewPagerAdapter(this, "", 0)
         binding.viewpager.adapter = detailOrnamentViewPagerAdapter
         TabLayoutMediator(binding.tabs, binding.viewpager) { tab, index ->
             tab.text = TAB_TITLES[index]

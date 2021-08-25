@@ -11,9 +11,12 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.exifinterface.media.ExifInterface
+import com.bccowo.naiz.core.util.Image
 import com.bccowo.naiz.databinding.ActivityDetectorBinding
 import com.bccowo.naiz.databinding.DialogLoadingBinding
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.domain.model.DetectionResult
+import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -33,38 +36,14 @@ class DetectorActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(binding.root)
 
-
         val imagePath = intent.getStringExtra(EXTRA_IMAGE_PATH) as String
         val imageFile = File(imagePath)
-        val bitmap = BitmapFactory.decodeFile(imageFile.absolutePath).run {
-            val exif = ExifInterface(imageFile.absolutePath)
-            val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1)
-            val matrix = Matrix()
-            when (orientation) {
-                6 -> {
-                    matrix.postRotate(90F)
-                }
-                3 -> {
-                    matrix.postRotate(180F)
-                }
-                8 -> {
-                    matrix.postRotate(270F)
-                }
-            }
-            Bitmap.createBitmap(this, 0, 0, this.width, this.height, matrix, true)
-        }
+        val bitmap = Image.createOptimizedImage(imageFile.absolutePath)
 
         binding.detectorImage.setImageBitmap(bitmap)
 
         val bottomSheetDialog = BottomSheetDialog.getInstance(supportFragmentManager) {}
 
-        detectorViewModel.getCandiData().observe(this, {
-            bottomSheetDialog.showData(it) { candi ->
-                detectorViewModel.detectImage(this, bitmap)
-                selectedCandi = candi
-                true
-            }
-        })
         val layout = DialogLoadingBinding.inflate(layoutInflater)
         val builder = AlertDialog.Builder(this).apply {
             setView(layout.root)
@@ -74,24 +53,37 @@ class DetectorActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        detectorViewModel.getCandiData().observe(this, {
+            bottomSheetDialog.showData(it) { candi ->
+                detectorViewModel.detectImage(this, bitmap)
+                selectedCandi = candi
+                true
+            }
+        })
+
         detectorViewModel.loading.observe(this, {
             if (it) dialog.show() else dialog.cancel()
         })
 
         detectorViewModel.detectionResult.observe(this, {
-            it?.let {
-                val intent = Intent(this, DetectionResultActivity::class.java).apply {
-                    putExtra(
-                        DetectionResultActivity.EXTRA_STATUS,
-                        DetectionResultActivity.STATUS_SUCCESS
-                    )
-                    putExtra(DetectionResultActivity.EXTRA_CANDI, selectedCandi)
-                    putExtra(DetectionResultActivity.EXTRA_IMAGE, imagePath)
-                    putExtra(DetectionResultActivity.EXTRA_RESULT, it)
-                }
-                startActivity(intent)
-                finish()
-            }
+            onDetectionResult(it, imagePath)
         })
     }
+
+    private fun onDetectionResult(it: DetectionResult?, imagePath: String) {
+        it?.let {
+            val intent = Intent(this, DetectionResultActivity::class.java).apply {
+                putExtra(
+                    DetectionResultActivity.EXTRA_STATUS,
+                    DetectionResultActivity.STATUS_SUCCESS
+                )
+                putExtra(DetectionResultActivity.EXTRA_CANDI, selectedCandi)
+                putExtra(DetectionResultActivity.EXTRA_IMAGE, imagePath)
+                putExtra(DetectionResultActivity.EXTRA_RESULT, it)
+            }
+            startActivity(intent)
+            finish()
+        }
+    }
+
 }

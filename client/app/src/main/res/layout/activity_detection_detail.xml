@@ -99,6 +99,33 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ornament_name" />
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                app:tabMode="scrollable"
+                android:background="@android:color/transparent"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ornament_description"
+                app:tabBackground="@drawable/bg_tab"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabTextAppearance="@style/DetailTabStyle"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="0dp"
+                app:tabTextColor="@color/tab_text_color" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabs" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

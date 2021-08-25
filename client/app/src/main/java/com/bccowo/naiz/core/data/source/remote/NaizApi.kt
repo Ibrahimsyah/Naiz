@@ -36,6 +36,18 @@ interface NaizApi {
         @Query("temple_id") templeIdQuery: String
     ): CandiScanCountResponse
 
+    @GET("/u/fetch/relief_types?select=name,similar:reliefs(name,image,id, description)")
+    suspend fun getSimilarRelief(
+        @Header("Authorization") authorization: String,
+        @Query("name") nameQuery: String
+    ) : SimillarReliefResponse
+
+    @GET("/u/fetch/temples?select=id,name,other:temple_relief_connections(id,relief: reliefs(id,name,image, description))")
+    suspend fun getOtherRelief(
+        @Header("Authorization") authorization: String,
+        @Query("id") candiIdQuery: String
+    ) : OtherReliefResponse
+
     @GET("/u/fetch/users?select=id")
     suspend fun checkCredentials(@Header("Authorization") authorization: String)
 

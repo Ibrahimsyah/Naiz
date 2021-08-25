@@ -98,4 +98,13 @@ object Mapper {
             choices
         )
     }
+
+    fun similarReliefResponseToModel(reliefResponse: com.bccowo.naiz.core.data.source.remote.response.Relief): Relief {
+        return Relief(
+            reliefResponse.id,
+            reliefResponse.name,
+            reliefResponse.description,
+            reliefResponse.image
+        )
+    }
 }

@@ -1,5 +1,6 @@
 package com.bccowo.naiz.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,11 @@ class OrnamentAdapter(private val listener: (Relief) -> Unit) :
     RecyclerView.Adapter<OrnamentAdapter.OrnamentViewHolder>() {
     private val dataList: MutableList<Relief> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(dataList: List<Relief>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
-        notifyItemRangeChanged(0, dataList.size)
+        notifyDataSetChanged()
     }
 
     inner class OrnamentViewHolder(val view: ItemOrnamentBinding) :
