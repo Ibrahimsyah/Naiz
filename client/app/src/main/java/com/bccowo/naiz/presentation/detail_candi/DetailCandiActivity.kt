@@ -171,7 +171,7 @@ class DetailCandiActivity : AppCompatActivity() {
                         it
                     )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, HomeActivity.REQUEST_IMAGE_CAPTURE)
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
         }
