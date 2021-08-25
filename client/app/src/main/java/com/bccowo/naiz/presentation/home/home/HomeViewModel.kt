@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bccowo.naiz.core.config.SharedPreference
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.CandiProgress
 import com.bccowo.naiz.domain.usecase.CandiUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,6 +14,8 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val candiUseCase: CandiUseCase, private val pref: SharedPreferences) :
     ViewModel() {
     private val accessToken = pref.getString(SharedPreference.PREF_USER_TOKEN, "") as String
+    private val userId = pref.getInt(SharedPreference.PREF_USER_ID, 0)
+
     val userName get() = pref.getString(SharedPreference.PREF_USER_NAME, "")
     val userPhoto get() = pref.getString(SharedPreference.PREF_USER_PHOTO, "")
 
@@ -27,14 +28,11 @@ class HomeViewModel(private val candiUseCase: CandiUseCase, private val pref: Sh
         result
     }
 
-    private val candiProgressData: LiveData<List<CandiProgress>> by lazy {
-        candiUseCase.getCandiProgress()
-    }
 
     fun getPopularCandi() = _popularCandiData
 
-    fun getCandiProgress(): LiveData<List<CandiProgress>> {
-        return candiProgressData
+    fun getCandiProgress(): LiveData<List<Candi>> {
+        return candiUseCase.getCandiProgress(userId, accessToken)
     }
 
     fun checkCandiBookmarked(id: Int) = candiUseCase.checkCandiBookmarked(id)

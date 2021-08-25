@@ -14,20 +14,27 @@ interface NaizApi {
     @POST("/sign_in?column=email, password, name, id, phone")
     suspend fun loginUser(@Body loginBody: LoginRequest): LoginResponse
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun getAllCandi(@Header("Authorization") authorization: String): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun getRelatedCandi(
         @Header("Authorization") authorization: String,
         @Query("id") candiIdQuery: String
     ): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate),  reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
+    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image))")
     suspend fun searchCandi(
         @Header("Authorization") authorization: String,
         @Query("name") searchQuery: String
     ): CandiResponseBody
+
+    @GET("/u/fetch/user_scans?select=count()")
+    suspend fun getCandiScanCount(
+        @Header("Authorization") authorization: String,
+        @Query("user_id") userIdQuery: String,
+        @Query("temple_id") templeIdQuery: String
+    ): CandiScanCountResponse
 
     @GET("/u/fetch/users?select=id")
     suspend fun checkCredentials(@Header("Authorization") authorization: String)

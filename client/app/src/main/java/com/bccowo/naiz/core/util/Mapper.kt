@@ -23,7 +23,8 @@ object Mapper {
             candi.ratingCount,
             candi.longitude,
             candi.latitude,
-            relief
+            relief,
+            candi.totalReliefs
         )
     }
 
@@ -40,7 +41,8 @@ object Mapper {
                 it.ratingCount,
                 it.longitude,
                 it.latitude,
-                reliefs
+                reliefs,
+                it.totalRelief
             )
         }
     }
@@ -69,7 +71,8 @@ object Mapper {
             rateCount,
             candiResponse.longitude.toDouble(),
             candiResponse.latitude.toDouble(),
-            reliefList
+            reliefList,
+            candiResponse.total_reliefs
         )
     }
 

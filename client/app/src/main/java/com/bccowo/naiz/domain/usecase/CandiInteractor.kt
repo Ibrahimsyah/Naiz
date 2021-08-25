@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.CandiProgress
 import com.bccowo.naiz.domain.model.Ornament
 import com.bccowo.naiz.domain.model.OrnamentDetail
 import com.bccowo.naiz.domain.repository.INaizRepository
@@ -43,15 +42,14 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
     }
 
 
-    override fun getCandiProgress(): LiveData<List<CandiProgress>> {
+    override fun getCandiProgress(userId: Int, accessToken: String): LiveData<List<Candi>> {
         return liveData {
-            emit(List(1) {
-                CandiProgress(
-                    "Candi Prambanan",
-                    "9/10",
-                    "https://inibaru.id/media/12275/large/normal/e1e09d11-a088-4e01-8025-7bfacc941142__large.jpg",
-                )
-            })
+            val candi = naizRepository.getAllCandi(accessToken)
+            candi.map {
+                val progress = naizRepository.getCandiScanCount(it.id, userId, accessToken)
+                it.scannedRelief = progress
+            }
+            emit(candi)
         }
     }
 

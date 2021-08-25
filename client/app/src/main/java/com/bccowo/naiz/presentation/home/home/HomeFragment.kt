@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_home_to_profile)
         }
     }
-    private fun onProgressCandiClick(candiProgress: CandiProgress) {
+    private fun onProgressCandiClick(candiProgress: Candi) {
         Toast.makeText(context, "Clicked ${candiProgress.name}", Toast.LENGTH_SHORT).show()
     }
 

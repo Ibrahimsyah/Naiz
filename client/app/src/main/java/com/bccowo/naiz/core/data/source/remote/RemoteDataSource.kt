@@ -72,4 +72,11 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         val auth = "Bearer $accessToken"
         return naizApi.submitScan(auth, candiId)
     }
+
+    suspend fun getCandiScanCount(candiId: Int, userId: Int, accessToken: String): Int {
+        val auth = "Bearer $accessToken"
+        val candiIdQuery = "eq.${candiId}"
+        val userIdQuery = "eq.${userId}"
+        return naizApi.getCandiScanCount(auth, userIdQuery, candiIdQuery).data[0].count
+    }
 }

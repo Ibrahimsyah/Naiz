@@ -3,7 +3,6 @@ package com.bccowo.naiz.domain.usecase
 import androidx.lifecycle.LiveData
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.CandiProgress
 import com.bccowo.naiz.domain.model.Ornament
 import com.bccowo.naiz.domain.model.OrnamentDetail
 
@@ -17,7 +16,7 @@ interface CandiUseCase {
     suspend fun getAllCandi(accessToken: String): List<Candi>
     suspend fun getRelatedCandi(candiId: Int, accessToken: String): List<Candi>
     suspend fun searchCandi(accessToken: String, query: String): List<Candi>
-    fun getCandiProgress(): LiveData<List<CandiProgress>>
+    fun getCandiProgress(userId: Int, accessToken: String): LiveData<List<Candi>>
     suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse
 
     fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>>
