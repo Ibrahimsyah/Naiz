@@ -1,5 +1,6 @@
 package com.bccowo.naiz.core.data.source.remote
 
+import com.bccowo.naiz.core.config.Network
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.QuizResultRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
@@ -8,72 +9,72 @@ import retrofit2.http.*
 
 interface NaizApi {
 
-    @POST("/sign_up")
+    @POST(Network.ENDPOINT_SIGN_UP)
     suspend fun registerUser(@Body registerBody: RegisterRequest): BasicResponse
 
-    @POST("/sign_in?column=email, password, name, id, phone")
+    @POST(Network.ENDPOINT_LOG_IN)
     suspend fun loginUser(@Body loginBody: LoginRequest): LoginResponse
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image, type: relief_types(name)))")
+    @GET(Network.ENDPOINT_ALL_CANDI)
     suspend fun getAllCandi(@Header("Authorization") authorization: String): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image, type: relief_types(name)))")
+    @GET(Network.ENDPOINT_ALL_CANDI)
     suspend fun getRelatedCandi(
         @Header("Authorization") authorization: String,
         @Query("id") candiIdQuery: String
     ): CandiResponseBody
 
-    @GET("/u/fetch/temples?select=id, name, description, address, image, longitude, latitude, rating:temple_reviews(rate), total_reliefs, reliefs: temple_relief_connections(id, detail: reliefs(name, description, image, type: relief_types(name)))")
+    @GET(Network.ENDPOINT_ALL_CANDI)
     suspend fun searchCandi(
         @Header("Authorization") authorization: String,
         @Query("name") searchQuery: String
     ): CandiResponseBody
 
-    @GET("/u/fetch/user_scans?select=count()")
+    @GET(Network.ENDPOINT_SCAN_COUNT)
     suspend fun getCandiScanCount(
         @Header("Authorization") authorization: String,
         @Query("user_id") userIdQuery: String,
         @Query("temple_id") templeIdQuery: String
     ): CandiScanCountResponse
 
-    @GET("/u/fetch/relief_types?select=name,similar:reliefs(name,image,id, description)")
+    @GET(Network.ENDPOINT_SIMILAR_RELIEF)
     suspend fun getSimilarRelief(
         @Header("Authorization") authorization: String,
         @Query("name") nameQuery: String
     ) : SimillarReliefResponse
 
-    @GET("/u/fetch/temples?select=id,name,other:temple_relief_connections(id,relief: reliefs(id,name,image, description))")
+    @GET(Network.ENDPOINT_OTHER_RELIEF)
     suspend fun getOtherRelief(
         @Header("Authorization") authorization: String,
         @Query("id") candiIdQuery: String
     ) : OtherReliefResponse
 
-    @GET("/u/fetch/users?select=id")
+    @GET(Network.ENDPOINT_CHECK_CREDENTIAL)
     suspend fun checkCredentials(@Header("Authorization") authorization: String)
 
-    @GET("/u/fetch/quiz_packs")
+    @GET(Network.ENDPOINT_GET_QUIZZES)
     suspend fun getQuiz(@Header("Authorization") authorization: String): QuizResponseBody
 
-    @GET("/u/fetch/quiz_questions?select=question, image, options: quiz_options(option, is_true)")
+    @GET(Network.ENDPOINT_GET_QUIZ_QUESTION)
     suspend fun getQuizQuestions(
         @Header("Authorization") authorization: String,
         @Query("quiz_pack_id") quizId: String
     ): QuizQuestionResponseBody
 
-    @POST("/u/quiz")
+    @POST(Network.ENDPOINT_SUBMIT_QUIZ)
     suspend fun submitQuizResult(
         @Header("Authorization") authorization: String,
         @Body quizResultRequest: QuizResultRequest
     ) : BasicResponse
 
-    @POST("/u/temple/review")
+    @POST(Network.ENDPOINT_SUBMIT_REVIEW)
     suspend fun submitReview(
         @Header("Authorization") authorization: String,
         @Query("temple_id") templeId: Int,
         @Query("rate") rate: Int
     ) : BasicResponse
 
-    @POST("/u/temple/scan")
+    @POST(Network.ENDPOINT_SUBMIT_SCAN)
     suspend fun submitScan(
         @Header("Authorization") authorization: String,
         @Query("temple_id") templeId: Int,
