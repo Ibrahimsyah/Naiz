@@ -3,8 +3,6 @@ package com.bccowo.naiz.domain.usecase
 import androidx.lifecycle.LiveData
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.Ornament
-import com.bccowo.naiz.domain.model.OrnamentDetail
 
 interface CandiUseCase {
     fun checkCandiBookmarked(candiId: Int): LiveData<Boolean>
@@ -18,8 +16,4 @@ interface CandiUseCase {
     suspend fun searchCandi(accessToken: String, query: String): List<Candi>
     fun getCandiProgress(userId: Int, accessToken: String): LiveData<List<Candi>>
     suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse
-
-    fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>>
-    fun getOrnamentDetail(ornamentId: Int): LiveData<OrnamentDetail>
-    fun getSimilarOrnament(ornamentId: Int): LiveData<List<Ornament>>
 }

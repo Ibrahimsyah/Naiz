@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bccowo.naiz.core.data.source.remote.response.BasicResponse
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.Ornament
-import com.bccowo.naiz.domain.model.OrnamentDetail
 import com.bccowo.naiz.domain.repository.INaizRepository
 
 class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCase {
@@ -59,48 +57,5 @@ class CandiInteractor(private val naizRepository: INaizRepository) : CandiUseCas
         accessToken: String
     ): BasicResponse {
         return naizRepository.submitCandiReview(candiId, rate, accessToken)
-    }
-
-    override fun getCandiOrnaments(candiId: Int): LiveData<List<Ornament>> {
-        return liveData {
-            emit(List(1) {
-                val isFound = it % 2 == 0
-                Ornament(
-                    1,
-                    "Relief Cerita Panji",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg/300px-COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg",
-                    isFound
-                )
-            })
-        }
-    }
-
-    override fun getOrnamentDetail(ornamentId: Int): LiveData<OrnamentDetail> {
-        return liveData {
-            emit(
-                OrnamentDetail(
-                    1,
-                    "Ornament 1",
-                    "12/11/2021",
-                    "https://d220hvstrn183r.cloudfront.net/attachment/04987806999941934963.large",
-                    "Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet "
-                )
-            )
-        }
-    }
-
-    override fun getSimilarOrnament(ornamentId: Int): LiveData<List<Ornament>> {
-        return liveData {
-            emit(
-                List(6) {
-                    val isFound = it % 2 == 0
-                    Ornament(
-                        1,
-                        "Relief Cerita Panji",
-                        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg/300px-COLLECTIE_TROPENMUSEUM_Prins_Panji_in_een_hof_met_drie_vrouwen._TMnr_2110-1.jpg",
-                        isFound
-                    )
-                })
-        }
     }
 }
