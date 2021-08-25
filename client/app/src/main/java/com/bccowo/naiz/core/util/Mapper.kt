@@ -10,7 +10,7 @@ object Mapper {
     fun candiModelToEntity(candi: Candi): CandiEntity {
         val relief = candi.reliefs.map {
             com.bccowo.naiz.core.data.source.local.entities.Relief(
-                it.id, it.name, it.description, it.image
+                it.id, it.name, it.description, it.image, it.type
             )
         }
         return CandiEntity(
@@ -30,7 +30,7 @@ object Mapper {
 
     fun candiEntityListToModel(candiList: List<CandiEntity>): List<Candi> {
         return candiList.map {
-            val reliefs = it.reliefs.map { ot -> Relief(ot.id, ot.name, ot.description, ot.image) }
+            val reliefs = it.reliefs.map { ot -> Relief(ot.id, ot.name, ot.description, ot.image, ot.type) }
             Candi(
                 it.id,
                 it.name,
@@ -57,7 +57,7 @@ object Mapper {
 
         val reliefList = candiResponse.reliefs.map {
             Relief(
-                it.id, it.detail.name, it.detail.description, it.detail.image
+                it.id, it.detail.name, it.detail.description, it.detail.image, it.detail.type.name
             )
         }
 
@@ -104,7 +104,8 @@ object Mapper {
             reliefResponse.id,
             reliefResponse.name,
             reliefResponse.description,
-            reliefResponse.image
+            reliefResponse.image,
+            ""
         )
     }
 }

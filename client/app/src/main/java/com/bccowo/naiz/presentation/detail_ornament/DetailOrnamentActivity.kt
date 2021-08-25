@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailOrnamentActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_ORNAMENT = "ORNAMENT"
+        const val EXTRA_CANDI_ID = "EXTRA_CANDI_ID"
         private val TAB_TITLES = arrayOf("Kemiripan", "Ornamen Lainnya")
     }
 
@@ -30,13 +31,14 @@ class DetailOrnamentActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val ornament = intent.getParcelableExtra<Relief>(EXTRA_ORNAMENT) as Relief
+        val candiId = intent.getIntExtra(EXTRA_CANDI_ID, 0)
         with(binding) {
             ornamentImage.load(ornament.image)
             ornamentName.text = ornament.name
             ornamentDescription.text = ornament.description
         }
 
-        val detailOrnamentViewPagerAdapter = OrnamentViewPagerAdapter(this, "", 0)
+        val detailOrnamentViewPagerAdapter = OrnamentViewPagerAdapter(this, ornament.type, candiId)
         binding.viewpager.adapter = detailOrnamentViewPagerAdapter
         TabLayoutMediator(binding.tabs, binding.viewpager) { tab, index ->
             tab.text = TAB_TITLES[index]

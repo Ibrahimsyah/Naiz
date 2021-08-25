@@ -26,6 +26,11 @@ data class Reliefs(
 data class ReliefDetail(
     val description: String,
     val image: String,
+    val name: String,
+    val type: ReliefType
+)
+
+data class ReliefType(
     val name: String
 )
 
