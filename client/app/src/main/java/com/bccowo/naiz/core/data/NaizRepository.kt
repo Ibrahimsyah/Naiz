@@ -79,6 +79,10 @@ class NaizRepository(
         return remoteDataSource.submitCandiReview(candiId, rate, accessToken)
     }
 
+    override suspend fun submitCandiScan(candiId: Int, accessToken: String): BasicResponse {
+        return remoteDataSource.submitCandiScan(candiId, accessToken)
+    }
+
     override suspend fun addCandiToBookmark(candi: Candi) {
         val candiEntity = Mapper.candiModelToEntity(candi)
         localDataSource.insertBookmark(candiEntity)

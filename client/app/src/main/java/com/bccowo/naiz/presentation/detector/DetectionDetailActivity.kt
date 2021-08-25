@@ -10,17 +10,20 @@ import coil.load
 import com.bccowo.naiz.databinding.ActivityDetectionDetailBinding
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.DetectionResult
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class DetectionDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetectionDetailBinding
+    private val detectorViewModel: DetectorViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetectionDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val candi = intent.getParcelableExtra<Candi>(DetectionResultActivity.EXTRA_CANDI)
+        val candi = intent.getParcelableExtra<Candi>(DetectionResultActivity.EXTRA_CANDI) as Candi
         val imagePath = intent.getStringExtra(DetectionResultActivity.EXTRA_IMAGE) as String
         val result =
             intent.getParcelableExtra<DetectionResult>(DetectionResultActivity.EXTRA_RESULT)
@@ -29,6 +32,7 @@ class DetectionDetailActivity : AppCompatActivity() {
         binding.ornamentDescription.text = result?.description
         binding.ornamentAddress.text = candi?.address
 
+        detectorViewModel.submitCandiScan(candi.id)
         val imageFile = File(imagePath)
         val bitmap = BitmapFactory.decodeFile(imageFile.absolutePath).run {
             val exif = ExifInterface(imageFile.absolutePath)

@@ -53,4 +53,10 @@ interface NaizApi {
         @Query("temple_id") templeId: Int,
         @Query("rate") rate: Int
     ) : BasicResponse
+
+    @POST("/u/temple/scan")
+    suspend fun submitScan(
+        @Header("Authorization") authorization: String,
+        @Query("temple_id") templeId: Int,
+    ): BasicResponse
 }

@@ -47,4 +47,10 @@ class DetectorViewModel(
             }
         }
     }
+
+    fun submitCandiScan(candiId: Int) {
+        viewModelScope.launch {
+            detectorUseCase.submitCandiScan(candiId, accessToken)
+        }
+    }
 }

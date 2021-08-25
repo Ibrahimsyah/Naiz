@@ -22,6 +22,7 @@ interface INaizRepository {
     suspend fun predictImage(imagePath: String): DetectionResult
     suspend fun submitQuizResult(quizId: Int, score: Int, accessToken: String): BasicResponse
     suspend fun submitCandiReview(candiId: Int, rate: Int, accessToken: String): BasicResponse
+    suspend fun submitCandiScan(candiId: Int, accessToken: String): BasicResponse
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)

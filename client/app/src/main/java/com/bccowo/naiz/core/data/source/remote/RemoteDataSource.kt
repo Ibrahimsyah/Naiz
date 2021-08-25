@@ -67,4 +67,9 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         val auth = "Bearer $accessToken"
         return naizApi.submitReview(auth, candiId, rate)
     }
+
+    suspend fun submitCandiScan(candiId: Int, accessToken: String): BasicResponse {
+        val auth = "Bearer $accessToken"
+        return naizApi.submitScan(auth, candiId)
+    }
 }
