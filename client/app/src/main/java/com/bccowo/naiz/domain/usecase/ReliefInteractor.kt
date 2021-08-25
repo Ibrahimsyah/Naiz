@@ -11,4 +11,8 @@ class ReliefInteractor(private val naizRepository: INaizRepository) : ReliefUseC
     override suspend fun getOtherRelief(candiId: Int, accessToken: String): List<Relief> {
         return naizRepository.getOtherRelief(candiId, accessToken)
     }
+
+    override suspend fun getCandiRelief(candiId: Int, accessToken: String): List<Relief> {
+        return naizRepository.getCandiRelief(candiId, accessToken)
+    }
 }

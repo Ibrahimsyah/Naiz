@@ -16,7 +16,6 @@ import com.bccowo.naiz.R
 import com.bccowo.naiz.core.util.GreetingGenerator
 import com.bccowo.naiz.databinding.FragmentHomeBinding
 import com.bccowo.naiz.domain.model.Candi
-import com.bccowo.naiz.domain.model.CandiProgress
 import com.bccowo.naiz.presentation.detail_candi.DetailCandiActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

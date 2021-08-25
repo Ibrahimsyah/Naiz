@@ -14,7 +14,6 @@ data class Candi(
     val ratingCount: Int,
     val longitude: Double,
     val latitude: Double,
-    val reliefs: List<Relief>,
     val totalReliefs: Int,
     var scannedRelief: Int = 0
 ) : Parcelable

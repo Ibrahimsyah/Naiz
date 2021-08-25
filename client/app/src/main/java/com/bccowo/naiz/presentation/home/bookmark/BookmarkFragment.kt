@@ -5,12 +5,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -18,9 +17,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bccowo.naiz.R
+import com.bccowo.naiz.core.ui.CandiListAdapter
 import com.bccowo.naiz.databinding.DialogDeleteBookmarksBinding
 import com.bccowo.naiz.databinding.FragmentBookmarkBinding
-import com.bccowo.naiz.core.ui.CandiListAdapter
 import com.bccowo.naiz.presentation.detail_candi.DetailCandiActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

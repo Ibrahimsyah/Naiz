@@ -1,7 +1,6 @@
 package com.bccowo.naiz.presentation.detector
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -9,6 +8,10 @@ import android.os.Handler
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.bccowo.naiz.core.config.Extras.EXTRA_CANDI
+import com.bccowo.naiz.core.config.Extras.EXTRA_IMAGE
+import com.bccowo.naiz.core.config.Extras.EXTRA_RESULT
+import com.bccowo.naiz.core.config.Extras.EXTRA_STATUS
 import com.bccowo.naiz.core.config.Storage.AUTHORITY
 import com.bccowo.naiz.core.util.Extension.gone
 import com.bccowo.naiz.core.util.Extension.visible
@@ -24,10 +27,6 @@ import java.util.*
 @Suppress("DEPRECATION")
 class DetectionResultActivity : AppCompatActivity() {
     companion object {
-        const val EXTRA_STATUS = "EXTRA_STATUS"
-        const val EXTRA_CANDI = "EXTRA_CANDI"
-        const val EXTRA_IMAGE = "EXTRA_IMAGE"
-        const val EXTRA_RESULT = "EXTRA_RESULT"
         const val STATUS_SUCCESS = 1
         const val STATUS_FAILED = 2
         private const val SUCCESS_DELAY_MILS = 1000L

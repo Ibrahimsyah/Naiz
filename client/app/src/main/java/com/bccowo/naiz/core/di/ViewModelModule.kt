@@ -1,10 +1,10 @@
 package com.bccowo.naiz.core.di
 
 import com.bccowo.naiz.core.ui.other_ornament.OtherOrnamentViewModel
+import com.bccowo.naiz.core.ui.similar_ornament.SimilarOrnamentViewModel
 import com.bccowo.naiz.presentation.detail_candi.DetailCandiViewModel
 import com.bccowo.naiz.presentation.detail_candi.nearest_candi.NearestCandiViewModel
-import com.bccowo.naiz.presentation.detail_ornament.DetailOrnamentViewModel
-import com.bccowo.naiz.core.ui.similar_ornament.SimilarOrnamentViewModel
+import com.bccowo.naiz.presentation.detail_candi.ornament.OrnamentViewModel
 import com.bccowo.naiz.presentation.detector.DetectorViewModel
 import com.bccowo.naiz.presentation.home.bookmark.BookmarkViewModel
 import com.bccowo.naiz.presentation.home.candilist.CandiListViewModel
@@ -29,11 +29,11 @@ val viewModelModule = module {
     viewModel { NearestCandiViewModel(get(), get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { LoginViewModel(get(), get()) }
-    viewModel { DetailOrnamentViewModel(get()) }
     viewModel { SimilarOrnamentViewModel(get(), get()) }
     viewModel { OtherOrnamentViewModel(get(), get()) }
     viewModel { QuizEventViewModel(get(), get()) }
     viewModel { DetectorViewModel(get(), get(), get()) }
-    viewModel { ProfileViewModel(get(), get()) }
-    viewModel { EditProfileViewModel(get(), get()) }
+    viewModel { ProfileViewModel(get()) }
+    viewModel { EditProfileViewModel(get()) }
+    viewModel { OrnamentViewModel(get(), get()) }
 }

@@ -15,7 +15,7 @@ class LoginViewModel(private val userUseCase: UserUseCase, private val prefs: Sh
     private val userPhoto =
         "https://i.pinimg.com/736x/80/cd/66/80cd662b2d7c0ae90ff1de1be49b36aa.jpg"
     private val _loading = MutableLiveData(false)
-    private val _status = MutableLiveData<Boolean>(null)
+    private val _status = MutableLiveData<Boolean?>(null)
 
     val loading get() = _loading
     val status get() = _status

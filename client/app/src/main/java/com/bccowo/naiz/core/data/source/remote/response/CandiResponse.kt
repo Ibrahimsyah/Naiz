@@ -14,24 +14,7 @@ data class CandiResponse(
     val latitude: String,
     val rating: List<CandiRating>,
     val total_reliefs: Int,
-    val reliefs: List<Reliefs>,
     val scanned_relief: Int = 0
-)
-
-data class Reliefs(
-    val id: Int,
-    val detail: ReliefDetail
-)
-
-data class ReliefDetail(
-    val description: String,
-    val image: String,
-    val name: String,
-    val type: ReliefType
-)
-
-data class ReliefType(
-    val name: String
 )
 
 data class CandiRating(

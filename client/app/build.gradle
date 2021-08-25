@@ -9,11 +9,6 @@ plugins {
 android {
     compileSdk 30
 
-    lintOptions{
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
     defaultConfig {
         applicationId "com.bccowo.naiz"
         minSdk 23

@@ -23,6 +23,7 @@ interface INaizRepository {
     suspend fun getCandiScanCount(candiId: Int, userId: Int, accessToken: String): Int
     suspend fun getSimilarRelief(reliefName: String, accessToken: String): List<Relief>
     suspend fun getOtherRelief(candiId: Int, accessToken: String): List<Relief>
+    suspend fun getCandiRelief(candiId: Int, accessToken: String): List<Relief>
 
     suspend fun addCandiToBookmark(candi: Candi)
     suspend fun removeCandiFromBookmark(candi: Candi)

@@ -4,21 +4,19 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.bccowo.naiz.R
 import com.bccowo.naiz.core.ui.OrnamentViewPagerAdapter
 import com.bccowo.naiz.databinding.ActivityDetailOrnamentBinding
 import com.bccowo.naiz.domain.model.Relief
 import com.google.android.material.tabs.TabLayoutMediator
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailOrnamentActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_ORNAMENT = "ORNAMENT"
         const val EXTRA_CANDI_ID = "EXTRA_CANDI_ID"
-        private val TAB_TITLES = arrayOf("Kemiripan", "Ornamen Lainnya")
     }
 
     private lateinit var binding: ActivityDetailOrnamentBinding
-    private val detailOrnamentViewModel: DetailOrnamentViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailOrnamentBinding.inflate(layoutInflater)
@@ -40,8 +38,10 @@ class DetailOrnamentActivity : AppCompatActivity() {
 
         val detailOrnamentViewPagerAdapter = OrnamentViewPagerAdapter(this, ornament.type, candiId)
         binding.viewpager.adapter = detailOrnamentViewPagerAdapter
+
+        val tabTitles = resources.getStringArray(R.array.ornament_tab_name)
         TabLayoutMediator(binding.tabs, binding.viewpager) { tab, index ->
-            tab.text = TAB_TITLES[index]
+            tab.text = tabTitles[index]
         }.attach()
 
     }

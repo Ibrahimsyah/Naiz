@@ -41,7 +41,7 @@ interface NaizApi {
     suspend fun getSimilarRelief(
         @Header("Authorization") authorization: String,
         @Query("name") nameQuery: String
-    ) : SimillarReliefResponse
+    ): SimilarReliefResponse
 
     @GET(Network.ENDPOINT_OTHER_RELIEF)
     suspend fun getOtherRelief(
@@ -72,11 +72,17 @@ interface NaizApi {
         @Header("Authorization") authorization: String,
         @Query("temple_id") templeId: Int,
         @Query("rate") rate: Int
-    ) : BasicResponse
+    ): BasicResponse
 
     @POST(Network.ENDPOINT_SUBMIT_SCAN)
     suspend fun submitScan(
         @Header("Authorization") authorization: String,
         @Query("temple_id") templeId: Int,
     ): BasicResponse
+
+    @GET(Network.ENDPOINT_GET_RELIEF)
+    suspend fun getReliefByCandiId(
+        @Header("Authorization") authorization: String,
+        @Query("id") templeId: String,
+    ): ReliefListResponse
 }

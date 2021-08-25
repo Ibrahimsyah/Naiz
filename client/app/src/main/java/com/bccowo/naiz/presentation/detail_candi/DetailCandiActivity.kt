@@ -39,7 +39,6 @@ import java.util.*
 class DetailCandiActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_CANDI_DETAIL = "EXTRA_CANDI_DETAIL"
-        val TAB_TITLES = listOf("Ornamen", "Tampilkan Peta", "Candi Terdekat")
         const val REQUEST_IMAGE_CAPTURE = 1
     }
 
@@ -60,6 +59,7 @@ class DetailCandiActivity : AppCompatActivity() {
             candiAddress.text = candi.address
             "${candi.totalReliefs} Relief".also { candiAssets.text = it }
             candiName.text = candi.name
+            candiRating.rating = candi.rating.toFloat()
             candiRatingText.text =
                 String.format(getString(R.string.rating_template), candi.rating, candi.ratingCount)
             candiDescription.text = candi.description
@@ -68,8 +68,10 @@ class DetailCandiActivity : AppCompatActivity() {
         val adapter = DetailViewPagerAdapter(this, candi)
         binding.viewPager.adapter = adapter
         binding.viewPager.isUserInputEnabled = false
+
+        val tabTitles = resources.getStringArray(R.array.detail_candi_tab_name)
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, index ->
-            tab.text = TAB_TITLES[index]
+            tab.text = tabTitles[index]
         }.attach()
 
         detailCandiViewModel.checkCandiBookmarked(candi.id).observe(this, {

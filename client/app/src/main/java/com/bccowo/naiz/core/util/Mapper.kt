@@ -8,11 +8,6 @@ import com.bccowo.naiz.domain.model.*
 
 object Mapper {
     fun candiModelToEntity(candi: Candi): CandiEntity {
-        val relief = candi.reliefs.map {
-            com.bccowo.naiz.core.data.source.local.entities.Relief(
-                it.id, it.name, it.description, it.image, it.type
-            )
-        }
         return CandiEntity(
             candi.id,
             candi.name,
@@ -23,14 +18,12 @@ object Mapper {
             candi.ratingCount,
             candi.longitude,
             candi.latitude,
-            relief,
             candi.totalReliefs
         )
     }
 
     fun candiEntityListToModel(candiList: List<CandiEntity>): List<Candi> {
         return candiList.map {
-            val reliefs = it.reliefs.map { ot -> Relief(ot.id, ot.name, ot.description, ot.image, ot.type) }
             Candi(
                 it.id,
                 it.name,
@@ -41,7 +34,6 @@ object Mapper {
                 it.ratingCount,
                 it.longitude,
                 it.latitude,
-                reliefs,
                 it.totalRelief
             )
         }
@@ -55,12 +47,6 @@ object Mapper {
                 { acc, candiRating -> acc + candiRating.rate }) / rateCount
         } else 0.0
 
-        val reliefList = candiResponse.reliefs.map {
-            Relief(
-                it.id, it.detail.name, it.detail.description, it.detail.image, it.detail.type.name
-            )
-        }
-
         return Candi(
             candiResponse.id,
             candiResponse.name,
@@ -71,7 +57,6 @@ object Mapper {
             rateCount,
             candiResponse.longitude.toDouble(),
             candiResponse.latitude.toDouble(),
-            reliefList,
             candiResponse.total_reliefs
         )
     }

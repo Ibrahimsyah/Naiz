@@ -96,6 +96,18 @@ class NaizRepository(
         }
     }
 
+    override suspend fun getCandiRelief(candiId: Int, accessToken: String): List<Relief> {
+        return remoteDataSource.getCandiRelief(candiId, accessToken).map {
+            Relief(
+                it.id,
+                it.name,
+                it.description,
+                it.image,
+                it.type.name
+            )
+        }
+    }
+
     override suspend fun addCandiToBookmark(candi: Candi) {
         val candiEntity = Mapper.candiModelToEntity(candi)
         localDataSource.insertBookmark(candiEntity)

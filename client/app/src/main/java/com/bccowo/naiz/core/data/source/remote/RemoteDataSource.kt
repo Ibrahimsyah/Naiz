@@ -1,6 +1,5 @@
 package com.bccowo.naiz.core.data.source.remote
 
-import android.util.Log
 import com.bccowo.naiz.core.data.source.remote.request.LoginRequest
 import com.bccowo.naiz.core.data.source.remote.request.QuizResultRequest
 import com.bccowo.naiz.core.data.source.remote.request.RegisterRequest
@@ -93,5 +92,11 @@ class RemoteDataSource(private val naizApi: NaizApi, private val naizMLApi: Naiz
         val candiIdQuery = "eq.${candiId}"
         val result = naizApi.getOtherRelief(auth, candiIdQuery)
         return if (result.data[0].other.isNotEmpty()) result.data[0].other else listOf()
+    }
+
+    suspend fun getCandiRelief(candiId: Int, accessToken: String): List<Relief> {
+        val auth = "Bearer $accessToken"
+        val candiIdQuery = "eq.${candiId}"
+        return naizApi.getReliefByCandiId(auth, candiIdQuery).data[0].reliefs
     }
 }

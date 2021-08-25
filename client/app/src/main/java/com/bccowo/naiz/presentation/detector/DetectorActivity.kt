@@ -1,22 +1,21 @@
 package com.bccowo.naiz.presentation.detector
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.Matrix
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.exifinterface.media.ExifInterface
+import com.bccowo.naiz.core.config.Extras.EXTRA_CANDI
+import com.bccowo.naiz.core.config.Extras.EXTRA_IMAGE
+import com.bccowo.naiz.core.config.Extras.EXTRA_RESULT
+import com.bccowo.naiz.core.config.Extras.EXTRA_STATUS
 import com.bccowo.naiz.core.util.Image
 import com.bccowo.naiz.databinding.ActivityDetectorBinding
 import com.bccowo.naiz.databinding.DialogLoadingBinding
 import com.bccowo.naiz.domain.model.Candi
 import com.bccowo.naiz.domain.model.DetectionResult
-import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -73,13 +72,10 @@ class DetectorActivity : AppCompatActivity() {
     private fun onDetectionResult(it: DetectionResult?, imagePath: String) {
         it?.let {
             val intent = Intent(this, DetectionResultActivity::class.java).apply {
-                putExtra(
-                    DetectionResultActivity.EXTRA_STATUS,
-                    DetectionResultActivity.STATUS_SUCCESS
-                )
-                putExtra(DetectionResultActivity.EXTRA_CANDI, selectedCandi)
-                putExtra(DetectionResultActivity.EXTRA_IMAGE, imagePath)
-                putExtra(DetectionResultActivity.EXTRA_RESULT, it)
+                putExtra(EXTRA_STATUS, DetectionResultActivity.STATUS_SUCCESS)
+                putExtra(EXTRA_CANDI, selectedCandi)
+                putExtra(EXTRA_IMAGE, imagePath)
+                putExtra(EXTRA_RESULT, it)
             }
             startActivity(intent)
             finish()

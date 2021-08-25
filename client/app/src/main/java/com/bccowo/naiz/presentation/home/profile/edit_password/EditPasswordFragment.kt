@@ -1,15 +1,14 @@
 package com.bccowo.naiz.presentation.home.profile.edit_password
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.bccowo.naiz.R
 import com.bccowo.naiz.databinding.FragmentEditPasswordBinding
 
 class EditPasswordFragment : Fragment() {

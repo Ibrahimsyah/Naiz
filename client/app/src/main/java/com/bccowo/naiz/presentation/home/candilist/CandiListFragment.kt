@@ -1,11 +1,10 @@
 package com.bccowo.naiz.presentation.home.candilist
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bccowo.naiz.core.ui.CandiListAdapter
 import com.bccowo.naiz.databinding.FragmentCandiListBinding
 import com.bccowo.naiz.domain.model.Candi
+import com.bccowo.naiz.presentation.detail_candi.DetailCandiActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CandiListFragment : Fragment() {
@@ -72,6 +72,8 @@ class CandiListFragment : Fragment() {
     }
 
     private fun onCandiClick(candi: Candi) {
-        Toast.makeText(context, "Clicked ${candi.name}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, DetailCandiActivity::class.java)
+        intent.putExtra(DetailCandiActivity.EXTRA_CANDI_DETAIL, candi)
+        startActivity(intent)
     }
 }

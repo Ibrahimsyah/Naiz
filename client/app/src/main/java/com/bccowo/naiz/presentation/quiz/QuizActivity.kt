@@ -34,7 +34,7 @@ class QuizActivity : AppCompatActivity() {
         var questionNumber = 1
         var score = 0
         var partialScore = 0
-        quizEventViewModel.getQuestions(quiz.id).observe(this, { it ->
+        quizEventViewModel.getQuestions(quiz.id).observe(this, {
             questionData = it
             binding.quizLevel.text = String.format(getString(R.string.quiz_level), quiz.level)
             binding.quizProgress.max = it.size

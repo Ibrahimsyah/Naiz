@@ -7,12 +7,9 @@
     <string name="landing_image">Image Onboarding</string>
     <string name="register_greeting">Belum Punya Akun?\nDaftar Sekarang</string>
     <string name="register_desc">Buat Akun agar Dapat Menjelajahi Fitur Kami dengan Memasukkan Informasi Berikut</string>
-    <string name="username">Username</string>
     <string name="fullname">Nama Lengkap</string>
     <string name="confirm_password">Konfirmasi Kata Sandi</string>
     <string name="create_account">Buat Akun</string>
-    <string name="forget_password_greet">Lupa Kata Sandi?\nJangan Panik</string>
-    <string name="forget_password_desc">Masukkan alamat email anda dan biarkan kami melakukan sisanya untuk anda</string>
     <string name="email">Alamat Email</string>
     <string name="password">Kata Sandi</string>
     <string name="create_new_account">Buat Akun Baru</string>
@@ -75,10 +72,7 @@
     <string name="make_sure_all_form_filled">Pastikan Semua Kolom Terisi</string>
     <string name="make_sure_confirmation_password_matched">Pastikan Konfirmasi Kata Sandi Sesuai</string>
     <string name="detail_ornamen">Detail Ornamen</string>
-    <string name="ornament_found_at">Anda menemukan ornamen pada %1$s</string>
-    <string name="ornament_found_date">Anda menemukan ornamen pada</string>
     <string name="auth_error">Email atau Password Salah</string>
-    <string name="skip">Lewati</string>
     <string name="quiz_image">Quiz Image</string>
     <string name="next_question">Lanjut</string>
     <string name="quiz_progress">%1$d/%2$d</string>
@@ -95,7 +89,6 @@
     <string name="scanning_success_description">Horee, anda berhasil menemukan relief baru dari candi ini!!</string>
     <string name="scanning_success">Deteksi sukses</string>
     <string name="scanning_image">Memindai Gambar, Mohon tunggu beberapa saat</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_password">Ubah Kata Sandi</string>
     <string name="about_app">Tentang Aplikasi</string>
@@ -115,4 +108,15 @@
     <string name="your_score">Score anda</string>
     <string name="quiz_success">Selamat anda menyelesaikan quiz dengan baik, coba selesaikan quiz-quiz menarik berikutnya!</string>
     <string name="quiz_failed">Sayang sekali, sedikit lagi anda bisa melewati quiz ini. Yuk belajar lagi sehingga nilai anda meningkat. Jangan patah semangat!</string>
+
+    <string-array name="ornament_tab_name">
+        <item>Kemiripan</item>
+        <item>Ornamen Lainnya</item>
+    </string-array>
+
+    <string-array name="detail_candi_tab_name">
+        <item>"Ornamen</item>
+        <item>Tampilkan Peta</item>
+        <item>Candi Terdekat</item>
+    </string-array>
 </resources>
