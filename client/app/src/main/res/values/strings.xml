@@ -119,6 +119,7 @@
     <string name="relief">Relief</string>
     <string name="show_map">Tampilkan Peta</string>
     <string name="nearest_candi">Candi Terdekat</string>
+    <string name="no_connection">Mohon aktifkan jaringan internet sebelum menggunakan aplikasi</string>
     <string-array name="detail_candi_tab_name">
         <item>@string/relief</item>
         <item>@string/show_map</item>

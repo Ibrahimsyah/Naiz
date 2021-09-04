@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val storageModule = module {
     single { LocalDataSource(get()) }
-    single { Room.databaseBuilder(androidContext(), NaizDb::class.java, Storage.DB_NAME).build() }
+    single { Room.databaseBuilder(androidContext(), NaizDb::class.java, Storage.DB_NAME).fallbackToDestructiveMigration().build() }
     single { get<NaizDb>().naizDao() }
     single {
         androidApplication().getSharedPreferences(
