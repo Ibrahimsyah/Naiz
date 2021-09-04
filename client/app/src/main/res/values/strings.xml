@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Naiz</string>
     <string name="dot">dot</string>
     <string name="sudah_punya_akun">Sudah Punya Akun?</string>
     <string name="masuk">Masuk</string>
     <string name="mulai_sekarang">Mulai Sekarang</string>
-    <string name="landing_image">Image Onboarding</string>
+    <string name="landing_image" translatable="false">Image Onboarding</string>
     <string name="register_greeting">Belum Punya Akun?\nDaftar Sekarang</string>
     <string name="register_desc">Buat Akun agar Dapat Menjelajahi Fitur Kami dengan Memasukkan Informasi Berikut</string>
     <string name="fullname">Nama Lengkap</string>
@@ -24,7 +24,7 @@
     <string name="user_photo">Foto Pengguna</string>
     <string name="user_name_dummy">Any Name</string>
     <string name="bookmark_candi">Bookmark candi</string>
-    <string name="candi_populer">Candi Populer</string>
+    <string name="candi_populer" tools:ignore="Typos">Candi Populer</string>
     <string name="lihat_lebih">Lihat lebih</string>
     <string name="candi_image">Gambar candi</string>
     <string name="bookmark_this_candi">Bookmark candi ini</string>
@@ -38,7 +38,7 @@
     <string name="quiz_budaya">Quiz Budaya</string>
     <string name="quiz_status">Status Quiz</string>
     <string name="quiz_banner">Banner Quiz</string>
-    <string name="quiz_level">Level %1$d</string>
+    <string name="quiz_level" translatable="false">Level %1$d</string>
     <string name="quiz_locked_message">Selesaikan level sebelumnya untuk membuka level ini</string>
     <string name="delete_icon">delete icon</string>
     <string name="delete_all_bookmarks">Hapus Semua Bookmarks?</string>
@@ -54,7 +54,7 @@
     <string name="candi_disimpan">Candi Disimpan</string>
     <string name="all_bookmark_deleted">Seluruh candi terhapus dari bookmark</string>
     <string name="bookmark_deleted">%1$s Terhapus dari Bookmark</string>
-    <string name="candi_assets">Candi assets</string>
+    <string name="candi_assets" translatable="false">Candi assets</string>
     <string name="scan_ornamen">Scan Ornamen</string>
     <string name="rate_level_1">Tidak Bagus</string>
     <string name="rate_level_2">Kurang Bagus</string>
@@ -73,9 +73,9 @@
     <string name="make_sure_confirmation_password_matched">Pastikan Konfirmasi Kata Sandi Sesuai</string>
     <string name="detail_ornamen">Detail Ornamen</string>
     <string name="auth_error">Email atau Password Salah</string>
-    <string name="quiz_image">Quiz Image</string>
+    <string name="quiz_image" translatable="false">Quiz Image</string>
     <string name="next_question">Lanjut</string>
-    <string name="quiz_progress">%1$d/%2$d</string>
+    <string name="quiz_progress" translatable="false">%1$d/%2$d</string>
     <string name="exit_quiz_description">Apakah anda yakin ingin keluar dari quiz? progress anda tidak akan tersimpan jika anda keluar</string>
     <string name="exit_quiz_title">Ingin Keluar Dari Quiz?</string>
     <string name="quiz_start_banner">Quiz Start Banner</string>
@@ -95,13 +95,13 @@
     <string name="logout">Keluar</string>
     <string name="quiz">Quiz</string>
     <string name="ornament">Ornament</string>
-    <string name="extension_icon">Extension Icon</string>
-    <string name="ornament_count_icon">Ornament Count Icon</string>
+    <string name="extension_icon" translatable="false">Extension Icon</string>
+    <string name="ornament_count_icon" translatable="false">Ornament Count Icon</string>
     <string name="change_language">Ubah Bahasa</string>
     <string name="ulang_kata_sandi_baru">Ulang Kata Sandi Baru</string>
     <string name="old_password">Kata Sandi Lama</string>
     <string name="new_password">Kata Sandi Baru</string>
-    <string name="rating_template">%.1f (%d reviews)</string>
+    <string name="rating_template" translatable="false">%.1f (%d reviews)</string>
     <string name="choose_candi">Pilih Candi</string>
     <string name="submit">Lanjutkan</string>
     <string name="scan_result">Hasil Scan</string>
@@ -109,14 +109,19 @@
     <string name="quiz_success">Selamat anda menyelesaikan quiz dengan baik, coba selesaikan quiz-quiz menarik berikutnya!</string>
     <string name="quiz_failed">Sayang sekali, sedikit lagi anda bisa melewati quiz ini. Yuk belajar lagi sehingga nilai anda meningkat. Jangan patah semangat!</string>
 
+    <string name="similarity">Kemiripan</string>
+    <string name="another_relief">Relief Lainnya</string>
     <string-array name="ornament_tab_name">
-        <item>Kemiripan</item>
-        <item>Ornamen Lainnya</item>
+        <item>@string/similarity</item>
+        <item>@string/another_relief</item>
     </string-array>
 
+    <string name="relief">Relief</string>
+    <string name="show_map">Tampilkan Peta</string>
+    <string name="nearest_candi">Candi Terdekat</string>
     <string-array name="detail_candi_tab_name">
-        <item>"Ornamen</item>
-        <item>Tampilkan Peta</item>
-        <item>Candi Terdekat</item>
+        <item>@string/relief</item>
+        <item>@string/show_map</item>
+        <item>@string/nearest_candi</item>
     </string-array>
 </resources>

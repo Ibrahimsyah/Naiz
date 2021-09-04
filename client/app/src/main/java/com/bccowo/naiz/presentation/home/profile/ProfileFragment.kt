@@ -1,6 +1,8 @@
 package com.bccowo.naiz.presentation.home.profile
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +59,11 @@ class ProfileFragment : Fragment() {
 
         binding.menuEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_edit_profile)
+        }
+
+        binding.menuEditLanguage.setOnClickListener {
+            val intent = Intent(ACTION_LOCALE_SETTINGS)
+            startActivity(intent)
         }
     }
 
